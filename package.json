@@ -1,0 +1,26 @@
+{
+    "name": "millstone",
+    "version": "0.0.1",
+    "main": "./lib/millstone.js",
+    "description": "Prepares datasources in an MML file for consumption in Mapnik",
+    "url": "https://github.com/mapbox/millstone",
+    "licenses": [{ "type": "BSD" }],
+    "repositories": [{
+        "type": "git",
+        "url": "git://github.com/mapbox/millstone.git"
+    }],
+    "author": {
+      "name": "MapBox",
+      "url": "http://mapbox.com/",
+      "email": "info@mapbox.com"
+    },
+
+    "dependencies": {
+        "underscore"  : "1.1.x",
+        "step": "0.0.x",
+        "generic-pool": "1.0.x",
+        "get": "~0.4.2",
+        "srs": "0.1.x",
+        "zipfile": "0.1.x"
+    }
+}
