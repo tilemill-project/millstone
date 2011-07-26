@@ -123,11 +123,28 @@ tests['cache'] = function() {
             fs.readFileSync(path.join(__dirname, 'data/absolute/absolute.shp'), 'utf8')
         );
 
-        // Cleanup.
-        rm(path.join(__dirname, 'tmp'));
-        fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
-        fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-shp'));
-        fs.unlinkSync(path.join(__dirname, 'cache/layers/stations'));
-        fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
+        millstone.flush({
+            layer: 'stations',
+            url: 'http://mapbox.github.com/millstone/test/stations.zip',
+            base: options.base,
+            cache: options.cache
+        }, function(err) {
+            assert.equal(err, undefined);
+
+            // Polygons layer and cache should still exist.
+            assert.ok(path.existsSync(path.join(__dirname, 'cache/layers/polygons.json')));
+            assert.ok(path.existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
+
+            // Stations layer and cache should be gone.
+            assert.ok(!path.existsSync(path.join(__dirname, 'layers/stations')));
+            assert.ok(!path.existsSync(path.join(__dirname, 'tmp/87c0c757-stations')));
+
+            // Cleanup.
+            rm(path.join(__dirname, 'tmp'));
+            fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
+            fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-shp'));
+            fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
+        });
     });
 };
+
