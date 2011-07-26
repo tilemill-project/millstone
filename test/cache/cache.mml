@@ -1,0 +1,44 @@
+{
+    "Stylesheet": [
+        {
+            "id": "cache-inline.mss",
+            "data": "Map { backgroound-color:#fff }"
+        },
+        "cache-local.mss",
+        "http://mapbox.github.com/millstone/test/cache-url.mss"
+    ],
+    "Layer": [
+        {
+            "name": "local-json",
+            "Datasource": {
+                "file": "layers/local.json"
+            }
+        },
+        {
+            "name": "local-shp",
+            "Datasource": {
+                "file": "layers/local/local.shp"
+            }
+        },
+        {
+            "name": "absolute-json",
+            "Datasource": {}
+        },
+        {
+            "name": "absolute-shp",
+            "Datasource": {}
+        },
+        {
+            "name": "polygons",
+            "Datasource": {
+                "file": "http://mapbox.github.com/millstone/test/polygons.json"
+            }
+        },
+        {
+            "name": "stations",
+            "Datasource": {
+                "file": "http://mapbox.github.com/millstone/test/stations.zip"
+            }
+        }
+    ]
+}
