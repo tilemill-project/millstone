@@ -39,7 +39,7 @@ tests['cache'] = function() {
         base: path.join(__dirname, 'cache'),
         cache: path.join(__dirname, 'tmp')
     };
-    millstone(options, function(err, resolved) {
+    millstone.resolve(options, function(err, resolved) {
         assert.equal(err, undefined);
         assert.deepEqual(resolved.Stylesheet, [
             { id:'cache-inline.mss', data:'Map { backgroound-color:#fff }' },
