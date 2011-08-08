@@ -20,7 +20,7 @@
         "generic-pool": "1.0.x",
         "get": "~0.4.2",
         "srs": "~0.2.3",
-        "zipfile": "0.1.x"
+        "zipfile": "~0.2.1"
     },
     "devDependencies": {
         "expresso": "0.8.x"
