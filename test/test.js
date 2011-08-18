@@ -53,7 +53,8 @@ tests['cache'] = function() {
                     "file": path.join(__dirname, 'cache/layers/local.json'),
                     "type": "ogr",
                     "layer_by_index": 0
-                }
+                },
+                "srs": "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
             },
             {
                 "name": "local-shp",
@@ -69,7 +70,8 @@ tests['cache'] = function() {
                     "file": path.join(__dirname, 'cache/layers/absolute-json.json'),
                     "type": "ogr",
                     "layer_by_index": 0
-                }
+                },
+                "srs": "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
             },
             {
                 "name": "absolute-shp",
@@ -85,7 +87,8 @@ tests['cache'] = function() {
                     "file": path.join(__dirname, 'cache/layers/polygons.json'),
                     "type": "ogr",
                     "layer_by_index": 0
-                }
+                },
+                "srs": "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
             },
             {
                 "name": "stations",
