@@ -39,6 +39,23 @@
             "Datasource": {
                 "file": "http://mapbox.github.com/millstone/test/stations.zip"
             }
+        },
+        {
+            "name": "sqlite",
+            "Datasource": {
+                "file": "layers/countries.sqlite",
+                "type": "sqlite",
+                "table": "countries"
+            }
+        },
+        {
+            "name": "sqlite-attach",
+            "Datasource": {
+                "file": "layers/countries.sqlite",
+                "type": "sqlite",
+                "table": "countries",
+                "attachdb": "data@layers/data.sqlite"
+            }
         }
     ]
 }

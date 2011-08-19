@@ -97,6 +97,26 @@ tests['cache'] = function() {
                     "type": "shape"
                 },
                 "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+            },
+            {
+                "name": 'sqlite',
+                "Datasource": {
+                    "file": path.join(__dirname, 'cache/layers/countries.sqlite'),
+                    "type": 'sqlite',
+                    "table": 'countries',
+                    "attachdb": '',
+                    "key_field": 'OGC_FID'
+                }
+            },
+            {
+                "name": 'sqlite-attach',
+                "Datasource": {
+                    "file": path.join(__dirname, 'cache/layers/countries.sqlite'),
+                    "type": 'sqlite',
+                    "table": 'countries',
+                    "attachdb": 'data@' + path.join(__dirname, 'cache/layers/data.sqlite'),
+                    "key_field": 'OGC_FID'
+                }
             }
         ]);
 
