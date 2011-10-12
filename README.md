@@ -8,6 +8,18 @@ Millstone now contains this logic - it provides two functions,
 `resolve` and `flush`. Resolve takes an MML file and returns a localized
 version, and `flush` can be used to clear the cache of a specific resource.
 
+## Usage
+
+The main usage of millstone is through the `millstone.resolve()` function:
+
+```javascript
+millstone.resolve({
+    mml: // Carto MML file
+    base: // Base path to find local resources
+    cache: // Where to store the cache of resources
+}, callback);
+```
+
 ## Authors
 
 * Will White

@@ -9,25 +9,43 @@ function rm(filepath) {
     var stat;
     var files;
 
-    try { stat = fs.lstatSync(filepath); } catch(e) { throw e };
+    try {
+        stat = fs.lstatSync(filepath);
+    } catch(e) {
+        throw e;
+    }
 
     // File.
     if (stat.isFile() || stat.isSymbolicLink()) {
         return fs.unlinkSync(filepath);
     // Directory.
     } else if (stat.isDirectory()) {
-        try { files = fs.readdirSync(filepath); } catch(e) { throw e };
+        try {
+            files = fs.readdirSync(filepath);
+        } catch(e) {
+            throw e;
+        }
+
         files.forEach(function(file) {
-            try { rm(path.join(filepath, file)); } catch(e) { throw e };
+            try {
+                rm(path.join(filepath, file));
+            } catch(e) {
+                throw e;
+            }
         });
-        try { fs.rmdirSync(filepath); } catch(e) { throw e };
+
+        try {
+            fs.rmdirSync(filepath);
+        } catch(e) {
+            throw e;
+        }
     // Other?
     } else {
         throw new Error('Unrecognized file.')
     }
-};
+}
 
-tests['cache'] = function() {
+tests.cache = function() {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache/cache.mml')));
 
     // Set absolute paths dynamically at test time.
@@ -154,6 +172,7 @@ tests['cache'] = function() {
         }, function(err) {
             assert.equal(err, undefined);
 
+            console.log(path.join(__dirname, 'cache/layers/polygons.json'));
             // Polygons layer and cache should still exist.
             assert.ok(path.existsSync(path.join(__dirname, 'cache/layers/polygons.json')));
             assert.ok(path.existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
@@ -170,4 +189,3 @@ tests['cache'] = function() {
         });
     });
 };
-
