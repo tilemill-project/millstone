@@ -18,7 +18,7 @@
         "underscore"  : "1.1.x",
         "step": "0.0.x",
         "generic-pool": "1.0.x",
-        "get": "~1.0.0",
+        "get": "~1.1.0",
         "srs": "~0.2.7",
         "zipfile": "~0.2.2",
         "sqlite3": "~2.0.16"
