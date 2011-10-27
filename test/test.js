@@ -54,7 +54,7 @@ tests['cache'] = function() {
                     "type": "ogr",
                     "layer_by_index": 0
                 },
-                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+                "srs": "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
             },
             {
                 "name": "local-shp",
@@ -71,7 +71,7 @@ tests['cache'] = function() {
                     "type": "ogr",
                     "layer_by_index": 0
                 },
-                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+                "srs": "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
             },
             {
                 "name": "absolute-shp",
@@ -88,7 +88,7 @@ tests['cache'] = function() {
                     "type": "ogr",
                     "layer_by_index": 0
                 },
-                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+                "srs": "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
             },
             {
                 "name": "stations",
