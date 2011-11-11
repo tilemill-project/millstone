@@ -112,8 +112,6 @@ tests['cache'] = function() {
                     "file": path.join(__dirname, 'cache/layers/countries.sqlite'),
                     "type": 'sqlite',
                     "table": 'countries',
-                    "attachdb": '',
-                    "key_field": 'OGC_FID'
                 }
             },
             {
@@ -123,7 +121,6 @@ tests['cache'] = function() {
                     "type": 'sqlite',
                     "table": 'countries',
                     "attachdb": 'data@' + path.join(__dirname, 'cache/layers/data.sqlite'),
-                    "key_field": 'OGC_FID'
                 }
             }
         ]);
