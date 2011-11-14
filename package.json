@@ -21,7 +21,8 @@
         "get": "~1.1.0",
         "srs": "~0.2.9",
         "zipfile": "~0.2.2",
-        "sqlite3": "~2.0.16"
+        "sqlite3": "~2.0.16",
+        "mime": ">= 0.0.1"
     },
     "devDependencies": {
         "expresso": "0.8.x"
