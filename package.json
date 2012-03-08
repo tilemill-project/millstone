@@ -20,8 +20,8 @@
         "generic-pool": "1.0.x",
         "get": "~1.1.0",
         "srs": "~0.2.12",
-        "zipfile": "~0.2.4",
-        "sqlite3": "~2.0.16",
+        "zipfile": "0.x",
+        "sqlite3": "2.x",
         "mime": ">= 0.0.1",
         "mkdirp": "~0.3.0"
     },
@@ -31,5 +31,6 @@
     "scripts": {
         "pretest": "which expresso || npm install --dev",
         "test": "which expresso | sh"
-    }
+    },
+    "engines": { "node": "0.4" || "0.6" }
 }
