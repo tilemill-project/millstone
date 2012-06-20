@@ -26,11 +26,11 @@
         "mkdirp": "~0.3.0"
     },
     "devDependencies": {
-        "expresso": "0.9.x"
+        "mocha": "1.0.x"
     },
     "scripts": {
-        "pretest": "which expresso || npm install --dev",
-        "test": "which expresso | sh"
+      "pretest": "npm install --dev",
+      "test": "mocha"
     },
     "engines": { "node": "0.4 || 0.6" }
 }
