@@ -64,19 +64,19 @@ it('correctly detects content-disposition from cartodb', function() {
     assert.equal(res,'.geojson');
 });
 
-it('correctly detects content-type', function() {
-    // this will fail
+it('correctly detects content-type bin', function() {
     var header = {
        'content-type':'application/octet-stream'
     };
     var res = millstone.guessExtension(header)
     assert.equal(res,'.bin');
+});
 
-    // geoserver
-    header = {
+it('correctly detects geoserver/datacouch csv content-type', function() {
+    var header = {
        'content-type':'text/csv; charset=UTF-8'
     };
-    res = millstone.guessExtension(header)
+    var res = millstone.guessExtension(header)
     assert.equal(res,'.csv');
 });
 
