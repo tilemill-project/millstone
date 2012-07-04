@@ -27,6 +27,59 @@ function rm(filepath) {
     }
 }
 
+it('correctly detects content-disposition from kml', function() {
+    // https://github.com/mapbox/millstone/issues/37
+    var header = {
+       'content-disposition':'attachment; filename="New York City\'s Solidarity Economy.kml"'
+    };
+    var res = millstone.guessExtension(header)
+    assert.equal(res,'.kml');
+});
+
+it('correctly detects content-disposition from google docs csv', function() {
+    // google docs
+    var header = {
+       'content-disposition':'attachment; filename="Untitledspreadsheet.csv"'
+    };
+    var res = millstone.guessExtension(header)
+    assert.equal(res,'.csv');
+});
+
+it('correctly detects content-disposition from geoserver', function() {
+    // https://github.com/mapbox/millstone/issues/27
+    // geoserver
+    var header = {
+       'content-disposition':"attachment; filename=foo.csv"
+    };
+    var res = millstone.guessExtension(header)
+    assert.equal(res,'.csv');
+});
+
+it('correctly detects content-disposition from cartodb', function() {
+    // cartodb
+    var header = {
+       'content-disposition':'inline; filename=cartodb-query.geojson; modification-date="Thu, 10 Nov 2011 19:53:40 GMT";'
+    };
+    var res = millstone.guessExtension(header)
+    assert.equal(res,'.geojson');
+});
+
+it('correctly detects content-type', function() {
+    // this will fail
+    var header = {
+       'content-type':'application/octet-stream'
+    };
+    var res = millstone.guessExtension(header)
+    assert.equal(res,'.bin');
+
+    // geoserver
+    header = {
+       'content-type':'text/csv; charset=UTF-8'
+    };
+    res = millstone.guessExtension(header)
+    assert.equal(res,'.csv');
+});
+
 it('correctly caches files', function() {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache/cache.mml')));
 
