@@ -80,6 +80,52 @@ it('correctly detects geoserver/datacouch csv content-type', function() {
     assert.equal(res,'.csv');
 });
 
+var realPlatform = process.platform; // Store real platform
+
+it('detects C:\\ as an absolute path on Windows', function() {
+    process.platform = 'win32';
+    var path = 'C:\\some\\path';
+    var res = millstone.isRelative(path);
+    assert.equal(res, false);
+});
+
+it('detects C:\\ as relative path on non-Windows', function() {
+    process.platform = 'linux';
+    var path = 'C:\\some\\path';
+    var res = millstone.isRelative(path);
+    assert.equal(res, true);
+});
+
+it('detects paths starting with \\ as absolute on Windows', function() {
+    process.platform = 'win32';
+    var path = '\\some\\path';
+    var res = millstone.isRelative(path);
+    assert.equal(res, false);
+});
+
+it('detects paths starting with \\ as relative on non-Windows', function() {
+    process.platform = 'linux';
+    var path = '\\some\\path';
+    var res = millstone.isRelative(path);
+    assert.equal(res, true);
+});
+
+it('detects paths starting with / as absolute on non-Windows', function() {
+    process.platform = 'linux';
+    var path = '/some/path';
+    var res = millstone.isRelative(path);
+    assert.equal(res, false);
+});
+
+it('detects paths starting with / as absolute on Windows', function() {
+    process.platform = 'win32';
+    var path = '/some/path';
+    var res = millstone.isRelative(path);
+    assert.equal(res, true);
+});
+
+process.platform = realPlatform;
+
 it('correctly caches files', function() {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache/cache.mml')));
 
