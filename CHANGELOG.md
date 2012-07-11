@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+#### 0.5.3
+
+* Updated node-get min version in order to fully support proxy auth
+* Improved cross-platform relative path detection
+
 #### 0.5.2
 
 * Improved regex used to detect content-disposition
