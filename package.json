@@ -23,13 +23,12 @@
         "zipfile": "0.x",
         "sqlite3": "2.x",
         "mime": ">= 0.0.1",
-        "mkdirp": "~0.3.0"
+        "mkdirp": "~0.3.3"
     },
     "devDependencies": {
-        "mocha": "1.0.x"
+        "mocha": "*"
     },
     "scripts": {
-      "pretest": "npm install --dev",
       "test": "mocha"
     },
     "engines": { "node": "0.4 || 0.6" }
