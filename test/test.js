@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 var millstone = require('../lib/millstone');
+var util = require('../lib/util');
 var tests = module.exports = {};
 
 // Recursive, synchronous rm.
@@ -238,7 +239,7 @@ it('correctly caches files', function(done) {
         assert.ok(path.existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
         assert.ok(path.existsSync(path.join(__dirname, 'tmp/87c0c757-stations/87c0c757-stations.shp')));
         assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/polygons.json')).isSymbolicLink());
-        assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/stations')).isSymbolicLink());
+        assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/stations')).isDirectory());
         assert.equal(
             fs.readFileSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json'), 'utf8'),
             fs.readFileSync(path.join(__dirname, 'cache/layers/polygons.json'), 'utf8')
@@ -250,7 +251,7 @@ it('correctly caches files', function(done) {
 
         // Check that absolute paths are symlinked correctly.
         assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/absolute-json.json')).isSymbolicLink());
-        assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/absolute-shp')).isSymbolicLink());
+        assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/absolute-shp')).isDirectory());
         assert.equal(
             fs.readFileSync(path.join(__dirname, 'cache/layers/absolute-json.json'), 'utf8'),
             fs.readFileSync(path.join(__dirname, 'data/absolute.json'), 'utf8')
@@ -279,10 +280,50 @@ it('correctly caches files', function(done) {
             // Cleanup.
             rm(path.join(__dirname, 'tmp'));
             fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
-            fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-shp'));
+            rm(path.join(__dirname, 'cache/layers/absolute-shp'));
             fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
             fs.unlinkSync(path.join(__dirname, 'cache/layers/csv'));
             done();
         });
     });
+});
+
+
+describe('util', function() {
+
+    var copypath = path.join(__dirname, 'copypath');
+
+    beforeEach(function() {
+        if (!path.existsSync(copypath)) fs.mkdirSync(copypath);
+    });
+
+    afterEach(function() {
+        rm(copypath);
+    });
+
+    it('copies all files from shapefiles (and no extras)', function(done) {
+
+        util.processSHP(path.join(__dirname, 'data/absolute/absolute.shp'), path.join(copypath, 'absolute/absolute.shp'), util.copy, function(err) {
+            assert.ok(!err);
+
+            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.shp')));
+            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.dbf')));
+            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.shx')));
+            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.prj')));
+            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.index')));
+            assert.ok(!path.existsSync(path.join(copypath, 'absolute/othername.shp')));
+
+            done();
+        });
+
+    });
+
+    it('copies single files correctly', function(done) {
+        util.copy(path.join(__dirname, 'data/absolute.json'), path.join(copypath, 'absolute.json'), function(err) {
+            assert.equal(err, undefined);
+            assert.ok(path.existsSync(path.join(copypath, 'absolute.json')));
+            done();
+        });
+    });
+
 });
