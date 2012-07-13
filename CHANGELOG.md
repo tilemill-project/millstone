@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.5.4
+
+* Fixes to better support localization of carto resources
+
 #### 0.5.3
 
 * Updated node-get min version in order to fully support proxy auth
