@@ -147,6 +147,19 @@ it('correctly caches files', function(done) {
         base: path.join(__dirname, 'cache'),
         cache: path.join(__dirname, 'tmp')
     };
+
+    // Copy "cached" files to mock request headers
+    try {
+        fs.mkdirSync(options.cache);
+        fs.mkdirSync(path.join(options.cache, '9368bdd9-zip_no_ext'));
+    } catch(e) {}
+    var files = ['9368bdd9-zip_no_ext/9368bdd9-zip_no_ext', '9368bdd9-zip_no_ext/.9368bdd9-zip_no_ext'];
+    for (var i = 0; i < files.length; i++) {
+        var newFile = fs.createWriteStream(path.join(options.cache, files[i]));
+        var oldFile = fs.createReadStream(path.join(__dirname, 'data', files[i]));
+        oldFile.pipe(newFile);
+    }
+
     millstone.resolve(options, function(err, resolved) {
         assert.equal(err.message, "Unable to determine SRS for layer \"sqlite-attach\" at " + path.join(__dirname, "cache/layers/countries.sqlite"));
         assert.deepEqual(resolved.Stylesheet, [
@@ -231,6 +244,14 @@ it('correctly caches files', function(done) {
                     "table": 'countries',
                     "attachdb": 'data@' + path.join(__dirname, 'cache/layers/data.sqlite'),
                 }
+            },
+            {
+                "name": 'zip-no-ext',
+                "Datasource": {
+                    "file": path.join(__dirname, 'cache/layers/zip-no-ext/9368bdd9-zip_no_ext.shp'),
+                    "type": 'shape'
+                },
+                "srs": '+proj=longlat +ellps=WGS84 +no_defs'
             }
         ]);
 
