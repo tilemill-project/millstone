@@ -151,9 +151,9 @@ it('correctly caches files', function(done) {
     // Copy "cached" files to mock request headers
     try {
         fs.mkdirSync(options.cache);
-        fs.mkdirSync(path.join(options.cache, '0a9f4dc0-zip_no_ext'));
+        fs.mkdirSync(path.join(options.cache, '9368bdd9-zip_no_ext'));
     } catch(e) {}
-    var files = ['0a9f4dc0-zip_no_ext/0a9f4dc0-zip_no_ext', '0a9f4dc0-zip_no_ext/.0a9f4dc0-zip_no_ext'];
+    var files = ['9368bdd9-zip_no_ext/9368bdd9-zip_no_ext', '9368bdd9-zip_no_ext/.9368bdd9-zip_no_ext'];
     for (var i = 0; i < files.length; i++) {
         var newFile = fs.createWriteStream(path.join(options.cache, files[i]));
         var oldFile = fs.createReadStream(path.join(__dirname, 'data', files[i]));
@@ -248,7 +248,7 @@ it('correctly caches files', function(done) {
             {
                 "name": 'zip-no-ext',
                 "Datasource": {
-                    "file": path.join(__dirname, 'cache/layers/zip-no-ext/0a9f4dc0-zip_no_ext.shp'),
+                    "file": path.join(__dirname, 'cache/layers/zip-no-ext/9368bdd9-zip_no_ext.shp'),
                     "type": 'shape'
                 },
                 "srs": '+proj=longlat +ellps=WGS84 +no_defs'

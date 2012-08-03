@@ -66,7 +66,7 @@
         {
             "name": "zip-no-ext",
             "Datasource": {
-                "file": "http://localhost:8000/zip_no_ext"
+                "file": "http://fakeurl.com/zip_no_ext"
             }
         }
     ]
