@@ -62,6 +62,12 @@
                 "table": "countries",
                 "attachdb": "data@layers/data.sqlite"
             }
+        },
+        {
+            "name": "zip-no-ext",
+            "Datasource": {
+                "file": "http://localhost:8000/zip_no_ext"
+            }
         }
     ]
 }
