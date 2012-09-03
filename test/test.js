@@ -135,7 +135,7 @@ describe('isRelative', function() {
 });
 
 
-it('correctly caches files', function(done) {
+it('correctly caches remote files', function(done) {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache/cache.mml')));
 
     // Set absolute paths dynamically at test time.
@@ -303,6 +303,7 @@ it('correctly caches files', function(done) {
             fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-shp'));
             fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
             fs.unlinkSync(path.join(__dirname, 'cache/layers/csv'));
+            fs.unlinkSync(path.join(__dirname, 'cache/layers/zip-no-ext'));
             done();
         });
     });
