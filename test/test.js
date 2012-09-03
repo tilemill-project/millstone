@@ -163,7 +163,7 @@ it('correctly caches remote files', function(done) {
     millstone.resolve(options, function(err, resolved) {
         assert.equal(err.message, "Unable to determine SRS for layer \"sqlite-attach\" at " + path.join(__dirname, "cache/layers/countries.sqlite"));
         assert.deepEqual(resolved.Stylesheet, [
-            { id:'cache-inline.mss', data:'Map { backgroound-color:#fff }' },
+            { id:'cache-inline.mss', data:'Map { background-color:#fff }' },
             { id:'cache-local.mss', data: '#world { polygon-fill: #fff }\n' },
             { id:'cache-url.mss', data:'#world { line-width:1; }\n' }
         ]);

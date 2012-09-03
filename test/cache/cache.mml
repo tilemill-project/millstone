@@ -2,7 +2,7 @@
     "Stylesheet": [
         {
             "id": "cache-inline.mss",
-            "data": "Map { backgroound-color:#fff }"
+            "data": "Map { background-color:#fff }"
         },
         "cache-local.mss",
         "http://mapbox.github.com/millstone/test/cache-url.mss"
