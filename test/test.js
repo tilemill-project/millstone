@@ -1,8 +1,13 @@
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
+
+// switch to 'development' for more verbose logging
+process.env.NODE_ENV = 'production'
+
 var millstone = require('../lib/millstone');
 var tests = module.exports = {};
+
 
 // Recursive, synchronous rm.
 function rm(filepath) {
