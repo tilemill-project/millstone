@@ -1,11 +1,10 @@
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
-var util = require('../lib/util');
 
 // switch to 'development' for more verbose logging
 process.env.NODE_ENV = 'production'
-
+var utils = require('../lib/util.js');
 var millstone = require('../lib/millstone');
 var tests = module.exports = {};
 
@@ -317,6 +316,7 @@ it('correctly caches remote files', function(done) {
 describe('util', function() {
 
     var copypath = path.join(__dirname, 'copypath');
+    var cache = path.join(__dirname, 'tmp');
 
     beforeEach(function() {
         if (!path.existsSync(copypath)) fs.mkdirSync(copypath);
@@ -328,7 +328,7 @@ describe('util', function() {
 
     it('copies all files from shapefiles (and no extras)', function(done) {
 
-        util.processSHP(path.join(__dirname, 'data/absolute/absolute.shp'), path.join(copypath, 'absolute/absolute.shp'), util.copy, function(err) {
+        utils.processSHP(path.join(__dirname, 'data/absolute/absolute.shp'), path.join(copypath, 'absolute/absolute.shp'), utils.copy, {cache:cache}, function(err) {
             assert.ok(!err);
 
             assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.shp')));
@@ -344,7 +344,7 @@ describe('util', function() {
     });
 
     it('copies single files correctly', function(done) {
-        util.copy(path.join(__dirname, 'data/absolute.json'), path.join(copypath, 'absolute.json'), function(err) {
+        utils.copy(path.join(__dirname, 'data/absolute.json'), path.join(copypath, 'absolute.json'), {cache:cache}, function(err) {
             assert.equal(err, undefined);
             assert.ok(path.existsSync(path.join(copypath, 'absolute.json')));
             done();
