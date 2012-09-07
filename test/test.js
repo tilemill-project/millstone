@@ -228,7 +228,6 @@ it('correctly caches remote files', function(done) {
                 "name": "csv",
                 "Datasource": {
                     "file": path.join(__dirname, 'cache/layers/csv'),
-                    "quiet": true,
                     "type": "csv"
                 },
                 "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
