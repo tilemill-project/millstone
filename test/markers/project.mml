@@ -1,0 +1,14 @@
+{
+    "Stylesheet": [
+        "style.mss"
+    ],
+    "Layer": [
+        {
+            "name": "points",
+            "Datasource": {
+                "type": "csv",
+                "file": "layers/points.csv"
+            }
+        }
+    ]
+}
