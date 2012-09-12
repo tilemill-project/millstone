@@ -4,33 +4,18 @@ var assert = require('assert');
 
 // switch to 'development' for more verbose logging
 process.env.NODE_ENV = 'production'
+
 var utils = require('../lib/util.js');
 var millstone = require('../lib/millstone');
 var tests = module.exports = {};
+var rm = require('./support.js').rm;
+
+var existsSync = require('fs').existsSync || require('path').existsSync;
 
 
-// Recursive, synchronous rm.
-function rm(filepath) {
-    var stat;
-    var files;
-
-    try { stat = fs.lstatSync(filepath); } catch(e) { throw e; }
-
-    // File.
-    if (stat.isFile() || stat.isSymbolicLink()) {
-        return fs.unlinkSync(filepath);
-    // Directory.
-    } else if (stat.isDirectory()) {
-        try { files = fs.readdirSync(filepath); } catch(e) { throw e; }
-        files.forEach(function(file) {
-            try { rm(path.join(filepath, file)); } catch(e) { throw e; }
-        });
-        try { fs.rmdirSync(filepath); } catch(e) { throw e; }
-    // Other?
-    } else {
-        throw new Error('Unrecognized file.');
-    }
-}
+beforeEach(function(){
+  rm(path.join(__dirname, 'tmp'));
+})
 
 it('correctly detects content-disposition from kml', function() {
     // https://github.com/mapbox/millstone/issues/37
@@ -260,8 +245,8 @@ it('correctly caches remote files', function(done) {
         ]);
 
         // Check that URLs are downloaded and symlinked.
-        assert.ok(path.existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
-        assert.ok(path.existsSync(path.join(__dirname, 'tmp/87c0c757-stations/87c0c757-stations.shp')));
+        assert.ok(existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
+        assert.ok(existsSync(path.join(__dirname, 'tmp/87c0c757-stations/87c0c757-stations.shp')));
         assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/polygons.json')).isSymbolicLink());
         assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/stations')).isDirectory());
         assert.equal(
@@ -294,15 +279,14 @@ it('correctly caches remote files', function(done) {
             assert.equal(err, undefined);
 
             // Polygons layer and cache should still exist.
-            assert.ok(path.existsSync(path.join(__dirname, 'cache/layers/polygons.json')));
-            assert.ok(path.existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
+            assert.ok(existsSync(path.join(__dirname, 'cache/layers/polygons.json')));
+            assert.ok(existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
 
             // Stations layer and cache should be gone.
-            assert.ok(!path.existsSync(path.join(__dirname, 'layers/stations')));
-            assert.ok(!path.existsSync(path.join(__dirname, 'tmp/87c0c757-stations')));
+            assert.ok(!existsSync(path.join(__dirname, 'layers/stations')));
+            assert.ok(!existsSync(path.join(__dirname, 'tmp/87c0c757-stations')));
 
             // Cleanup.
-            rm(path.join(__dirname, 'tmp'));
             fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
             rm(path.join(__dirname, 'cache/layers/absolute-shp'));
             fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
@@ -319,7 +303,7 @@ describe('util', function() {
     var cache = path.join(__dirname, 'tmp');
 
     beforeEach(function() {
-        if (!path.existsSync(copypath)) fs.mkdirSync(copypath);
+        if (!existsSync(copypath)) fs.mkdirSync(copypath);
     });
 
     afterEach(function() {
@@ -331,12 +315,12 @@ describe('util', function() {
         utils.processSHP(path.join(__dirname, 'data/absolute/absolute.shp'), path.join(copypath, 'absolute/absolute.shp'), utils.copy, {cache:cache}, function(err) {
             assert.ok(!err);
 
-            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.shp')));
-            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.dbf')));
-            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.shx')));
-            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.prj')));
-            assert.ok(path.existsSync(path.join(copypath, 'absolute/absolute.index')));
-            assert.ok(!path.existsSync(path.join(copypath, 'absolute/othername.shp')));
+            assert.ok(existsSync(path.join(copypath, 'absolute/absolute.shp')));
+            assert.ok(existsSync(path.join(copypath, 'absolute/absolute.dbf')));
+            assert.ok(existsSync(path.join(copypath, 'absolute/absolute.shx')));
+            assert.ok(existsSync(path.join(copypath, 'absolute/absolute.prj')));
+            assert.ok(existsSync(path.join(copypath, 'absolute/absolute.index')));
+            assert.ok(!existsSync(path.join(copypath, 'absolute/othername.shp')));
 
             done();
         });
@@ -346,7 +330,7 @@ describe('util', function() {
     it('copies single files correctly', function(done) {
         utils.copy(path.join(__dirname, 'data/absolute.json'), path.join(copypath, 'absolute.json'), {cache:cache}, function(err) {
             assert.equal(err, undefined);
-            assert.ok(path.existsSync(path.join(copypath, 'absolute.json')));
+            assert.ok(existsSync(path.join(copypath, 'absolute.json')));
             done();
         });
     });
