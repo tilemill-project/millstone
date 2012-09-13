@@ -157,7 +157,7 @@ it('correctly caches remote files', function(done) {
             { id:'cache-local.mss', data: '#world { polygon-fill: #fff }\n' },
             { id:'cache-url.mss', data:'#world { line-width:1; }\n' }
         ]);
-        assert.deepEqual(resolved.Layer, [
+        var expected = [
             {
                 "name": "local-json",
                 "Datasource": {
@@ -212,7 +212,7 @@ it('correctly caches remote files', function(done) {
             {
                 "name": "csv",
                 "Datasource": {
-                    "file": path.join(__dirname, 'cache/layers/csv'),
+                    "file": path.join(__dirname, 'cache/layers/csv.csv'),
                     "type": "csv"
                 },
                 "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
@@ -242,7 +242,10 @@ it('correctly caches remote files', function(done) {
                 },
                 "srs": '+proj=longlat +ellps=WGS84 +no_defs'
             }
-        ]);
+        ];
+        for (var i=0;i<=10;i++) {
+          assert.deepEqual(resolved.Layer[i], expected[i]);
+        }
 
         // Check that URLs are downloaded and symlinked.
         assert.ok(existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
@@ -290,7 +293,7 @@ it('correctly caches remote files', function(done) {
             fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
             rm(path.join(__dirname, 'cache/layers/absolute-shp'));
             fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
-            fs.unlinkSync(path.join(__dirname, 'cache/layers/csv'));
+            fs.unlinkSync(path.join(__dirname, 'cache/layers/csv.csv'));
             rm(path.join(__dirname, 'cache/layers/zip-no-ext'));
             done();
         });
