@@ -1,5 +1,21 @@
 ## CHANGELOG
 
+#### 0.5.6
+
+* Fixed extension handling for urls without an extension
+
+* Moved to streaming copy of data when in copy mode to avoid too much memory usage
+
+* Fixed race condition when localizing imag/svg icons in styles like point-file and marker-file.
+
+* Exposed the global downloads object so calling applications can see how many downloads millstone is currently handling
+
+* Removed node v0.8.x deprecation warnings
+
+* Added more agressive re-copying of data when it is out of date and millstone is in copy mode (win XP)
+
+* Moved to processing shapefile parts instead of the directory
+
 #### 0.5.5
 
 * Added a verbose mode that can be trigged by setting NODE_ENV = 'development'
