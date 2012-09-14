@@ -138,6 +138,15 @@ it('correctly caches remote files', function(done) {
         cache: path.join(__dirname, 'tmp')
     };
 
+    // Cleanup from old test runs
+    try {
+        fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
+        rm(path.join(__dirname, 'cache/layers/absolute-shp'));
+        fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
+        fs.unlinkSync(path.join(__dirname, 'cache/layers/csv.csv'));
+        rm(path.join(__dirname, 'cache/layers/zip-no-ext'));
+    } catch (e) {}
+
     // Copy "cached" files to mock request headers
     try {
         fs.mkdirSync(options.cache);
@@ -289,12 +298,6 @@ it('correctly caches remote files', function(done) {
             assert.ok(!existsSync(path.join(__dirname, 'layers/stations')));
             assert.ok(!existsSync(path.join(__dirname, 'tmp/87c0c757-stations')));
 
-            // Cleanup.
-            fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
-            rm(path.join(__dirname, 'cache/layers/absolute-shp'));
-            fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
-            fs.unlinkSync(path.join(__dirname, 'cache/layers/csv.csv'));
-            rm(path.join(__dirname, 'cache/layers/zip-no-ext'));
             done();
         });
     });
