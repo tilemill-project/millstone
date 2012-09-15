@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.5.7
+
+* Fixed handling of multiple non-unique carto urls in the same stylesheet (#63)
+
 #### 0.5.6
 
 * Fixed extension handling for urls without an extension
