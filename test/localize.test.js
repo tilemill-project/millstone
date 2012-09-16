@@ -22,14 +22,13 @@ it('correctly localizes remote image/svg files', function(done) {
     var options = {
         mml: mml,
         base: path.join(__dirname, 'markers'),
-        cache: path.join(__dirname, 'tmp')
+        cache: '/tmp'
     };
 
     millstone.resolve(options, function(err, resolved) {
-        assert.equal(err,undefined);
+        assert.equal(err,undefined,err);
         assert.equal(resolved.Stylesheet[0].id, 'style.mss');
-        assert.equal(resolved.Stylesheet[0].data.slice(0,27), "#points { marker-file: url(");
-        assert.notEqual(resolved.Stylesheet[0].data.slice(27,31), 'http'); // should be a local, absolute path
+        assert.equal(resolved.Stylesheet[0].data, '#points { one/marker-file: url(/tmp/e33af80e-Cup_of_coffee.svg); two/marker-file: url(\'/tmp/e33af80e-Cup_of_coffee.svg\'); three/marker-file: url(/tmp/ce5fcc0b-SVG-logo.svg);}');
         assert.deepEqual(resolved.Layer, [
             {
                 "name": "points",

@@ -1,1 +1,1 @@
-#points { marker-file: url(http://upload.wikimedia.org/wikipedia/commons/7/72/Cup_of_coffee.svg); }
+#points { one/marker-file: url(http://upload.wikimedia.org/wikipedia/commons/7/72/Cup_of_coffee.svg); two/marker-file: url('http://upload.wikimedia.org/wikipedia/commons/7/72/Cup_of_coffee.svg'); three/marker-file: url(http://upload.wikimedia.org/wikipedia/en/c/ce/SVG-logo.svg);}

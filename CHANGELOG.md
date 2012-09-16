@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.5.8
+
+* Improved uri regex methods for carto urls - amends #63
+
 #### 0.5.7
 
 * Fixed handling of multiple non-unique carto urls in the same stylesheet (#63)
