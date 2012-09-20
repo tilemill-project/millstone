@@ -309,7 +309,7 @@ describe('util', function() {
     var cache = path.join(__dirname, 'tmp');
 
     beforeEach(function() {
-        if (!existsSync(copypath)) fs.mkdirSync(copypath);
+        if (!existsSync(copypath)) fs.mkdirSync(copypath,0777);
     });
 
     afterEach(function() {
