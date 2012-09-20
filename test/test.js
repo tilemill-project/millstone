@@ -149,9 +149,9 @@ it('correctly caches remote files', function(done) {
 
     // Copy "cached" files to mock request headers
     try {
-        fs.mkdirSync(options.cache);
-        fs.mkdirSync(path.join(options.cache, '9368bdd9-zip_no_ext'));
-    } catch(e) {}
+        fs.mkdirSync(options.cache, 0777);
+        fs.mkdirSync(path.join(options.cache, '9368bdd9-zip_no_ext'),0777);
+    } catch(e) { console.log("mkdirSync failed with: " + e ); }
     var files = ['9368bdd9-zip_no_ext/9368bdd9-zip_no_ext', '9368bdd9-zip_no_ext/.9368bdd9-zip_no_ext'];
     for (var i = 0; i < files.length; i++) {
         var newFile = fs.createWriteStream(path.join(options.cache, files[i]));
