@@ -1,5 +1,13 @@
 ## CHANGELOG
 
+#### 0.5.9
+
+* Improved uri regex methods for carto urls - #68, #69, #70, #72, and #73
+
+* Use copy fallback on Windows platforms supporting symlinks but where the user does not have the symlink 'right' (#71)
+
+* Restored Node v0.4.x support
+
 #### 0.5.8
 
 * Improved uri regex methods for carto urls - amends #63

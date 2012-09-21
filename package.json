@@ -1,6 +1,6 @@
 {
     "name": "millstone",
-    "version": "0.5.8",
+    "version": "0.5.9",
     "main": "./lib/millstone.js",
     "description": "Prepares datasources in an MML file for consumption in Mapnik",
     "url": "https://github.com/mapbox/millstone",
