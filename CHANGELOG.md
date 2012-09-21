@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.5.10
+
+* Fixed missing error handling when localizing Carto URIs
+
 #### 0.5.9
 
 * Improved uri regex methods for carto urls - #68, #69, #70, #72, and #73
