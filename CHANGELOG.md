@@ -2,6 +2,8 @@
 
 ####
 
+* Improved handling of known file extensions to better support guessing extensions via headers
+
 * Fixed handling of sqlite attach with absolute paths
 
 #### 0.5.10
