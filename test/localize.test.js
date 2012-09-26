@@ -27,7 +27,7 @@ it('correctly localizes remote image/svg files', function(done) {
     millstone.resolve(options, function(err, resolved) {
         assert.equal(err,undefined,err);
         assert.equal(resolved.Stylesheet[0].id, 'style.mss');
-        assert.equal(resolved.Stylesheet[0].data, '// a url like https:example.com in the comments\n#points { one/marker-file: url(/tmp/millstone-test/e33af80e-Cup_of_coffee.svg); two/marker-file: url(\'/tmp/millstone-test/e33af80e-Cup_of_coffee.svg\'); three/marker-file: url(/tmp/millstone-test/ce5fcc0b-SVG-logo.svg); four/marker-file: url("/tmp/millstone-test/c953e0d1-pin-m-fast-food+AA0000.png"); five/marker-file:url(/tmp/millstone-test/a2278544-octocat-svg/a2278544-octocat-svg.svg); }');
+        assert.equal(resolved.Stylesheet[0].data, '// a url like https:example.com in the comments\n#points { one/marker-file: url(\'/tmp/millstone-test/e33af80e-Cup_of_coffee.svg\'); two/marker-file: url(\'/tmp/millstone-test/e33af80e-Cup_of_coffee.svg\'); three/marker-file: url(\'/tmp/millstone-test/ce5fcc0b-SVG-logo.svg\'); four/marker-file: url("/tmp/millstone-test/c953e0d1-pin-m-fast-food+AA0000.png"); five/marker-file:url("/tmp/millstone-test/a2278544-octocat-svg/a2278544-octocat-svg.svg"); }');
         assert.deepEqual(resolved.Layer, [
             {
                 "name": "points",
