@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+####
+
+* Fixed handling of sqlite attach with absolute paths
+
 #### 0.5.10
 
 * Fixed missing error handling when localizing Carto URIs
