@@ -52,7 +52,8 @@
                 "file": "layers/countries.sqlite",
                 "type": "sqlite",
                 "table": "countries"
-            }
+            },
+            "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
         },
         {
             "name": "sqlite-attach",
@@ -61,7 +62,8 @@
                 "type": "sqlite",
                 "table": "countries",
                 "attachdb": "data@layers/data.sqlite"
-            }
+            },
+            "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
         },
         {
             "name": "zip-no-ext",

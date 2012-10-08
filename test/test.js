@@ -160,7 +160,7 @@ it('correctly caches remote files', function(done) {
     }
 
     millstone.resolve(options, function(err, resolved) {
-        assert.equal(err.message, "Unable to determine SRS for layer \"sqlite-attach\" at " + path.join(__dirname, "cache/layers/countries.sqlite"));
+        assert.equal(err, undefined);
         assert.deepEqual(resolved.Stylesheet, [
             { id:'cache-inline.mss', data:'Map { background-color:#fff }' },
             { id:'cache-local.mss', data: '#world { polygon-fill: #fff }\n' },
@@ -232,7 +232,8 @@ it('correctly caches remote files', function(done) {
                     "file": path.join(__dirname, 'cache/layers/countries.sqlite'),
                     "type": 'sqlite',
                     "table": 'countries',
-                }
+                },
+                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
             {
                 "name": 'sqlite-attach',
@@ -241,7 +242,8 @@ it('correctly caches remote files', function(done) {
                     "type": 'sqlite',
                     "table": 'countries',
                     "attachdb": 'data@' + path.join(__dirname, 'cache/layers/data.sqlite'),
-                }
+                },
+                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
             {
                 "name": 'zip-no-ext',
