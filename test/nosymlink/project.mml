@@ -1,0 +1,37 @@
+{
+    "Stylesheet": [
+        "style.mss"
+    ],
+    "Layer": [
+        {
+            "name": "one",
+            "Datasource": {
+                "file": "points.csv"
+            }
+        },
+        {
+            "name": "two",
+            "Datasource": {
+                "file": "pshape.shp"
+            }
+        },
+        {
+            "name": "three",
+            "Datasource": {
+                "file": "pshape.zip"
+            }
+        },
+        {
+            "name": "four",
+            "Datasource": {
+                "file": "points.vrt"
+            }
+        },
+        {
+            "name": "five",
+            "Datasource": {
+                "file": "DYNAMICALLY FILED IN"
+            }
+        }
+    ]
+}
