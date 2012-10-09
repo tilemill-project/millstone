@@ -119,7 +119,7 @@ describe('isRelative', function() {
         process.platform = 'win32';
         var path = '/some/path';
         var res = millstone.isRelative(path);
-        assert.equal(res, true);
+        assert.equal(res, false);
     });
 
 });
