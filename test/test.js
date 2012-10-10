@@ -119,7 +119,7 @@ describe('isRelative', function() {
         process.platform = 'win32';
         var path = '/some/path';
         var res = millstone.isRelative(path);
-        assert.equal(res, true);
+        assert.equal(res, false);
     });
 
 });
@@ -160,7 +160,7 @@ it('correctly caches remote files', function(done) {
     }
 
     millstone.resolve(options, function(err, resolved) {
-        assert.equal(err, undefined);
+        if (err) throw err;
         assert.deepEqual(resolved.Stylesheet, [
             { id:'cache-inline.mss', data:'Map { background-color:#fff }' },
             { id:'cache-local.mss', data: '#world { polygon-fill: #fff }\n' },
