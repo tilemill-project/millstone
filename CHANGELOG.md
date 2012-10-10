@@ -1,6 +1,14 @@
 ## CHANGELOG
 
-####
+#### 0.5.11
+
+* Will now throw if files do not exist (instead of throwing on missing/unknown srs)
+
+* Fixed support for loading layer datasource files from alternative windows drives
+
+* Moved to no-symlink/no-copy behavior on all windows versions
+
+* Updated node-srs version
 
 * Improved handling of known file extensions to better support guessing extensions via headers
 
