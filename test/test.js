@@ -59,10 +59,10 @@ it('correctly detects content-type bin', function() {
        'content-type':'application/octet-stream'
     };
     var res = millstone.guessExtension(header)
-    assert.equal(res,'.bin');
+    assert.equal(res,'');
 });
 
-it('correctly detects geoserver/datacouch csv content-type', function() {
+it('correctly detects datacouch csv content-type', function() {
     var header = {
        'content-type':'text/csv; charset=UTF-8'
     };
@@ -70,6 +70,13 @@ it('correctly detects geoserver/datacouch csv content-type', function() {
     assert.equal(res,'.csv');
 });
 
+// http://horn.rcmrd.org/data/geonode:Eth_Region_Boundary
+it('correctly detects geonode content-types', function() {
+    assert.equal('.gml',millstone.guessExtension({'content-type':'text/xml; subtype=gml/2.1.2'}));
+    assert.equal('.zip',millstone.guessExtension({'content-type':'application/zip'}));
+    assert.equal('.kml',millstone.guessExtension({'content-type':'application/vnd.google-earth.kml+xml'}));
+    assert.equal('.json',millstone.guessExtension({'content-type':'application/json'}));
+});
 
 describe('isRelative', function() {
 
