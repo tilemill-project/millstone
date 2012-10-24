@@ -327,7 +327,7 @@ describe('util', function() {
 
     it('copies all files from shapefiles (and no extras)', function(done) {
 
-        utils.processSHP(path.join(__dirname, 'data/absolute/absolute.shp'), path.join(copypath, 'absolute/absolute.shp'), utils.copy, {cache:cache}, function(err) {
+        utils.processFiles(path.join(__dirname, 'data/absolute/absolute.shp'), path.join(copypath, 'absolute/absolute.shp'), utils.copy, {cache:cache}, function(err) {
             assert.ok(!err);
 
             assert.ok(existsSync(path.join(copypath, 'absolute/absolute.shp')));

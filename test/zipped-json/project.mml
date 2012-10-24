@@ -1,0 +1,13 @@
+{
+    "Stylesheet": [
+        "style.mss"
+    ],
+    "Layer": [
+        {
+            "name": "polygons-zipped",
+            "Datasource": {
+                "file": "http://mapbox.github.com/millstone/test/polygons.json.zip"
+            }
+        }
+    ]
+}

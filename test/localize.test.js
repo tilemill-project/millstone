@@ -41,3 +41,32 @@ it('correctly localizes remote image/svg files', function(done) {
         done();
     });
 });
+
+it('correctly localizes zipped json', function(done) {
+    var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'zipped-json/project.mml')));
+
+    var options = {
+        mml: mml,
+        base: path.join(__dirname, 'zipped-json'),
+        cache: '/tmp/millstone-test'
+    };
+
+    millstone.resolve(options, function(err, resolved) {
+        assert.equal(err,undefined,err);
+        assert.equal(resolved.Stylesheet[0].id, 'style.mss');
+        assert.equal(resolved.Stylesheet[0].data, '#polygon { }');
+        var expected = [
+            {
+                "name": "polygons-zipped",
+                "Datasource": {
+                    "file": path.join(__dirname, 'zipped-json/layers/polygons-zipped/7e482cc8-polygons.json.json'),
+                    "type": "ogr",
+                    "layer_by_index": 0
+                },
+                "srs": '+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs'
+            }
+        ];
+        assert.deepEqual(resolved.Layer, expected);
+        done();
+    });
+});
