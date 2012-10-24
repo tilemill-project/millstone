@@ -28,6 +28,9 @@
     "devDependencies": {
         "mocha": "*"
     },
+    "bin": {
+      "millstone": "./bin/millstone"
+    },
     "scripts": {
       "test": "mocha -R spec --timeout 10000"
     },
