@@ -25,7 +25,7 @@ it('correctly handles invalid json', function(done) {
     };
 
     millstone.resolve(options, function(err, resolved) {
-        assert.equal(err.message,"Could not parse: '/Users/dane/projects/tilemill/node_modules/millstone/test/invalid-json/broken.json': error: 'Unexpected token ]'");
+        assert.notEqual(err.message.search("error: 'Unexpected token ]'",-1));
         done();
     });
 });
