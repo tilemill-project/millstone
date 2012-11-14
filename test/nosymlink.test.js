@@ -82,7 +82,7 @@ it('correctly handles files without symlinking', function(done) {
                     "type": "shape"
                 },
                 "srs": "+proj=longlat +ellps=WGS84 +no_defs"
-            },
+            }
         ];
         for (var i=0;i<=expected.length;i++) {
           assert.deepEqual(resolved.Layer[i], expected[i]);
