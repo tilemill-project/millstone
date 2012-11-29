@@ -11,9 +11,10 @@ var rm = require('./support.js').rm;
 
 var existsSync = require('fs').existsSync || require('path').existsSync;
 
-beforeEach(function(){
-  rm(path.join(__dirname, '/tmp/millstone-test'));
-})
+before(function(){
+  rm('/tmp/millstone-test');
+});
+
 
 it('correctly localizes remote image/svg files', function(done) {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'markers/project.mml')));

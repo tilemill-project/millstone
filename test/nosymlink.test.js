@@ -12,8 +12,9 @@ var rm = require('./support.js').rm;
 var existsSync = require('fs').existsSync || require('path').existsSync;
 
 beforeEach(function(){
-  rm(path.join(__dirname, '/tmp/millstone-test'));
-})
+  rm('/tmp/millstone-test');
+});
+
 
 it('correctly handles files without symlinking', function(done) {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'nosymlink/project.mml')));

@@ -1,0 +1,13 @@
+{
+    "Stylesheet": [
+        "style.mss"
+    ],
+    "Layer": [
+        {
+            "name": "points",
+            "Datasource": {
+                "file": "http://cartodb.s3.amazonaws.com/static/crashes_2007_2009.zip"
+            }
+        }
+    ]
+}
