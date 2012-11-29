@@ -1,0 +1,14 @@
+{
+    "Stylesheet": [
+        "style.mss"
+    ],
+    "Layer": [
+        {
+            "name": "background-image-noext",
+            "Datasource": {
+                "type": "csv",
+                "inline": "x,y\n0,0"
+            }
+        }
+    ]
+}

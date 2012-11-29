@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+var path = require('path');
+var fs = require('fs');
+var millstone = require('millstone');
+
+var args = process.argv.slice(1);
+
+var mml = JSON.parse(fs.readFileSync(args[1]));
+
+var options = {
+    mml: mml,
+    base: path.dirname(args[1]),
+    cache: '/tmp/millstone-test'
+};
+
+millstone.resolve(options, function(err, resolved) {
+    if (err) throw err;
+    console.log(JSON.stringify(resolved,null,4));
+    //process.exit()
+});
