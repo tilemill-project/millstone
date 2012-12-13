@@ -1,5 +1,14 @@
 ## CHANGELOG
 
+#### 0.5.12
+
+* Added command line millstone tool
+* Added support for reading any supported file in .zip archives
+* Better error messages if broken symlinks are encountered
+* Support added for downloading images at urls without clear image file extensions
+* Fixed handling of hidden files in zip archives
+* Switched to using console.error for log output
+
 #### 0.5.11
 
 * Will now throw if files do not exist (instead of throwing on missing/unknown srs)
