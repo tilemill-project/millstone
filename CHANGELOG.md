@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+#### 0.5.13
+
+* Fixed a bug where millstone would hang if an absolute path to a shapefile was used and that
+  shapefile did not exist at that path.
+
 #### 0.5.12
 
 * Added command line millstone tool
