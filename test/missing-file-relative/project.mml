@@ -1,0 +1,13 @@
+{
+    "Stylesheet": [
+        "style.mss"
+    ],
+    "Layer": [
+        {
+            "name": "missing-file-relative",
+            "Datasource": {
+                "file": "missing.shp"
+            }
+        }
+    ]
+}

@@ -25,7 +25,40 @@ it('correctly handles invalid json', function(done) {
     };
 
     millstone.resolve(options, function(err, resolved) {
-        assert.notEqual(err.message.search("error: 'Unexpected token ]'",-1));
+        assert.ok(err.message.search("error: 'Unexpected token ]'") != -1);
+        done();
+    });
+});
+
+it('correctly handles missing shapefile at relative path', function(done) {
+    var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'missing-file-relative/project.mml')));
+
+    var options = {
+        mml: mml,
+        base: path.join(__dirname, 'missing-file-relative'),
+        cache: '/tmp/millstone-test'
+    };
+
+    millstone.resolve(options, function(err, resolved) {
+        var err_expected = err.message.search("File not found:") != -1 || err.message.search("Can't open") != -1;
+        assert.ok(err_expected);
+        done();
+    });
+});
+
+
+it('correctly handles missing shapefile at absolute path', function(done) {
+    var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'missing-file-absolute/project.mml')));
+
+    var options = {
+        mml: mml,
+        base: path.join(__dirname, 'missing-file-absolute'),
+        cache: '/tmp/millstone-test'
+    };
+
+    millstone.resolve(options, function(err, resolved) {
+        var err_expected = err.message.search("File not found:") != -1 || err.message.search("Can't open") != -1;
+        assert.ok(err_expected);
         done();
     });
 });
