@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.5.14
+
+* Fixed detections and handling of files with upper or mixed case extensions.
+
 #### 0.5.13
 
 * Fixed a bug where millstone would hang if an absolute path to a shapefile was used and that
