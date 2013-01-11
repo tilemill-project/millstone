@@ -1,0 +1,13 @@
+{
+    "Stylesheet": [
+        "style.mss"
+    ],
+    "Layer": [
+        {
+            "name": "uppercase-ext",
+            "Datasource": {
+                "file": "test1.CSV"
+            }
+        }
+    ]
+}
