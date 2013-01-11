@@ -6,6 +6,10 @@ var millstone = require('millstone');
 
 var args = process.argv.slice(1);
 
+if (!args[1]) {
+   console.log('millstone: please provide a path to an mml file');
+   process.exit(1);
+}
 var mml = JSON.parse(fs.readFileSync(args[1]));
 
 var options = {
@@ -17,5 +21,6 @@ var options = {
 millstone.resolve(options, function(err, resolved) {
     if (err) throw err;
     console.log(JSON.stringify(resolved,null,4));
-    //process.exit()
+    // force exit to avoid wait for generic-pool to empty
+    process.exit(0);
 });
