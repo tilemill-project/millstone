@@ -1,0 +1,13 @@
+{
+    "Stylesheet": [
+        "style.mss"
+    ],
+    "Layer": [
+        {
+            "name": "corrupt-zip",
+            "Datasource": {
+                "file": "https://github.com/mapbox/millstone/raw/gh-pages/test/Cle%CC%81ment.zip"
+            }
+        }
+    ]
+}
