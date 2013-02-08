@@ -1,5 +1,12 @@
 ## CHANGELOG
 
+#### 0.5.15
+
+* Added better error output when millstone is unable to detect the appropriate mapnik datasource
+  for a file based datasources
+* Added support for attempting to re-download zip archives that are cached but cannot be opened
+  (handles partial downloads that may have failed due to network failure)
+
 #### 0.5.14
 
 * Fixed detections and handling of files with upper or mixed case extensions.

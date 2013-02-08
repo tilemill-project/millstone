@@ -3,19 +3,31 @@
 var path = require('path');
 var fs = require('fs');
 var millstone = require('millstone');
+var optimist = require('optimist')
+            .usage("Usage: $0 <source MML file>")
+            .options('h', {alias:'help', describe:'Display this help message'})
+            .options('n', {alias:'nosymlink', boolean:true, describe:'Use unmodified paths instead of symlinking files'});
 
-var args = process.argv.slice(1);
+var options = optimist.argv;
 
-if (!args[1]) {
+if (options.help) {
+    optimist.showHelp();
+    process.exit(0);
+}
+
+var input = options._[0];
+
+if (!input) {
    console.log('millstone: please provide a path to an mml file');
    process.exit(1);
 }
-var mml = JSON.parse(fs.readFileSync(args[1]));
+var mml = JSON.parse(fs.readFileSync(input));
 
 var options = {
     mml: mml,
-    base: path.dirname(args[1]),
-    cache: '/tmp/millstone-test'
+    base: path.dirname(input),
+    cache: '/tmp/millstone-test',
+    nosymlink: options.nosymlink
 };
 
 millstone.resolve(options, function(err, resolved) {
