@@ -88,11 +88,15 @@ it('correctly handles files without symlinking', function(done) {
         for (var i=0;i<=expected.length;i++) {
           assert.deepEqual(resolved.Layer[i], expected[i]);
         }
-        // cleanup
-        rm(path.join(__dirname, 'nosymlink','pshape.shp'));
-        rm(path.join(__dirname, 'nosymlink','pshape.dbf'));
-        rm(path.join(__dirname, 'nosymlink','pshape.prj'));
-        rm(path.join(__dirname, 'nosymlink','pshape.shx'));
         done();
     });
 });
+
+after(function() {
+  // cleanup
+  rm(path.join(__dirname, 'nosymlink','pshape.shp'));
+  rm(path.join(__dirname, 'nosymlink','pshape.dbf'));
+  rm(path.join(__dirname, 'nosymlink','pshape.prj'));
+  rm(path.join(__dirname, 'nosymlink','pshape.shx'));
+  rm(path.join(__dirname, 'nosymlink','.pshape.zip'));
+})
