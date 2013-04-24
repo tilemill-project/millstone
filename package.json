@@ -19,8 +19,8 @@
         "step": "~0.0.5",
         "generic-pool": "~2.0.3",
         "request": "~2.14.0",
-        "srs": "~0.2.20",
-        "zipfile": "0.x",
+        "srs": "https://github.com/springmeyer/node-srs/tarball/master",
+        "zipfile": "https://github.com/springmeyer/node-zipfile/tarball/adm-zip",
         "sqlite3": "2.x",
         "mime": "~1.2.9",
         "mkdirp": "~0.3.3"
