@@ -1,3 +1,6 @@
+before_install:
+ - sudo apt-get install -qq libgdal1-dev
+
 language: node_js
 node_js:
   - 0.6
