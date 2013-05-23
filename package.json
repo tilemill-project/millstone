@@ -5,10 +5,10 @@
     "description": "Prepares datasources in an MML file for consumption in Mapnik",
     "url": "https://github.com/mapbox/millstone",
     "licenses": [{ "type": "BSD" }],
-    "repositories": [{
+    "repository": {
         "type": "git",
         "url": "git://github.com/mapbox/millstone.git"
-    }],
+    },
     "author": {
       "name": "MapBox",
       "url": "http://mapbox.com/",
