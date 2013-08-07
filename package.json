@@ -23,7 +23,8 @@
         "zipfile": "https://github.com/springmeyer/node-zipfile/tarball/adm-zip",
         "sqlite3": "2.x",
         "mime": "~1.2.9",
-        "mkdirp": "~0.3.3"
+        "mkdirp": "~0.3.3",
+        "optimist": "~0.6.0"
     },
     "devDependencies": {
         "mocha": "*"
