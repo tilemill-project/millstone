@@ -1,0 +1,11 @@
+{
+    "Stylesheet": [ ],
+    "Layer": [
+        {
+            "name": "zip-with-shapefile-and-txt",
+            "Datasource": {
+                "file": "../data/ne_10m_admin_0_boundary_lines_disputed_areas.zip"
+            }
+        }
+    ]
+}
