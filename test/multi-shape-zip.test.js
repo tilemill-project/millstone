@@ -3,7 +3,7 @@ var path = require('path');
 var assert = require('assert');
 
 // switch to 'development' for more verbose logging
-//process.env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'production'
 var utils = require('../lib/util.js');
 var millstone = require('../lib/millstone');
 var tests = module.exports = {};
@@ -16,7 +16,7 @@ beforeEach(function(){
 })
 
 // https://github.com/mapbox/millstone/issues/99
-it('correctly throws if zipfile contains multiple shapefiles', function(done) {
+it('correctly handles a zipfile containing multiple shapefiles without corrupting data', function(done) {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'multi-shape-zip/project.mml')));
     
     var cache = '/tmp/millstone-test';
@@ -31,7 +31,18 @@ it('correctly throws if zipfile contains multiple shapefiles', function(done) {
     } catch (e) {}
     
     millstone.resolve(options, function(err, resolved) {
-        //assert.equal(err.message,'');
+        assert.equal(err,undefined,err);
+        var expected = [
+            {
+                "name": "multi-shape-zip",
+                "Datasource": {
+                    "file": path.join(__dirname, 'multi-shape-zip/layers/multi-shape-zip/134ecf39-PLATES_PlateBoundary_ArcGIS.shp'),
+                    "type": "shape"
+                },
+                "srs": '+proj=longlat +ellps=WGS84 +no_defs'
+            }
+        ];
+        assert.deepEqual(resolved.Layer, expected);
         done();
     });
 });
