@@ -1,0 +1,12 @@
+{
+    "Stylesheet": [],
+    "Layer": [
+        {
+            "name": "raster-linking",
+            "Datasource": {
+                "file": "../data/snow-cover.tif"
+            },
+            "srs":"+init=epsg:3857"
+        }
+    ]
+}
