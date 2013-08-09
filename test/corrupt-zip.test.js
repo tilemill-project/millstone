@@ -45,10 +45,10 @@ it('correctly handles re-downloading a zip that is invalid in its cached state',
             {
                 "name": "corrupt-zip",
                 "Datasource": {
-                    "file": path.join(__dirname, 'corrupt-zip/layers/corrupt-zip/29f2b277-Cle%CC%81ment.csv'),
-                    "type": "csv"
+                    "file": path.join(__dirname, 'corrupt-zip/layers/corrupt-zip/29f2b277-Cle%CC%81ment.shp'),
+                    "type": "shape"
                 },
-                "srs": '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
+                "srs": '+proj=longlat +ellps=WGS84 +no_defs'
             }
         ];
         assert.deepEqual(resolved.Layer, expected);
