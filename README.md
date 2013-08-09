@@ -1,6 +1,7 @@
 # millstone
 
 [![Build Status](https://secure.travis-ci.org/mapbox/millstone.png?branch=master)](http://travis-ci.org/mapbox/millstone)
+[![Dependencies](https://david-dm.org/mapbox/millstone.png)](https://david-dm.org/mapbox/millstone)
 
 As of [carto 0.2.0](https://github.com/mapbox/carto), the Carto module expects
 all datasources and resources to be localized - remote references like
