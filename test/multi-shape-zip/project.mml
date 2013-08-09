@@ -1,0 +1,11 @@
+{
+    "Stylesheet": [],
+    "Layer": [
+        {
+            "name": "multi-shape-zip",
+            "Datasource": {
+                "file": "https://github.com/mapbox/millstone/raw/gh-pages/test/PLATES_PlateBoundary_ArcGIS.zip"
+            }
+        }
+    ]
+}
