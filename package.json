@@ -20,7 +20,7 @@
         "generic-pool": "~2.0.3",
         "request": "~2.26.0",
         "srs": "~0.3.0",
-        "zipfile": "https://github.com/springmeyer/node-zipfile/tarball/adm-zip",
+        "zipfile": "~0.4.0",
         "sqlite3": "2.x",
         "mime": "~1.2.9",
         "mkdirp": "~0.3.3",
