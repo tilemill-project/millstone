@@ -35,7 +35,7 @@ it('correctly handles re-downloading a zip that is invalid in its cached state',
     
     // write bogus data over the zip archive to simulate a corrupt cache
     if (!existsSync('/tmp/millstone-test/29f2b277-Cle%CC%81ment/')) fs.mkdirSync('/tmp/millstone-test/29f2b277-Cle%CC%81ment/')
-    fs.writeFileSync('/tmp/millstone-test/29f2b277-Cle%CC%81ment/29f2b277-Cle%CC%81ment.zip','bogus data');
+    fs.writeFileSync('/tmp/millstone-test/29f2b277-Cle%CC%81ment/29f2b277-Cle%CC%81ment.zip','');
 
     millstone.resolve(options, function(err, resolved) {
         assert.equal(err,undefined,err);
