@@ -1,5 +1,13 @@
 ## CHANGELOG
 
+#### 0.6.0
+
+* Supports node v0.10.x
+* Upgraded various deps: request, underscore, mime, generic-pool, optimist
+* Upgraded to node-srs@0.3.0
+* Increased the download pool size from 5 to 10 and fixed up release logic
+* Various fixes to zipfile handling and upgrade of node-zipfile to v0.4.0
+
 #### 0.5.15
 
 * Added better error output when millstone is unable to detect the appropriate mapnik datasource
