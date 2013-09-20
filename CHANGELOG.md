@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.1
+
+* Always honour filepath option in .download #105 (strk)
+
 #### 0.6.0
 
 * Supports node v0.10.x
