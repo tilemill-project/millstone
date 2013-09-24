@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.4
+
+* Fixed bug causing zip files to be uncompressed even when they had already been uncompressed
+
 #### 0.6.3
 
 * Added `millstone.drainPool` function to forcefully drain the downloads pool
