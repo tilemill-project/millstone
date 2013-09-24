@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.2
+
+* Fixed reading for metafiles
+
 #### 0.6.1
 
 * Always honour filepath option in .download #105 (strk)
