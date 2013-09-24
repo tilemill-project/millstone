@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.3
+
+* Added `millstone.drainPool` function to forcefully drain the downloads pool
+
 #### 0.6.2
 
 * Fixed reading for metafiles
