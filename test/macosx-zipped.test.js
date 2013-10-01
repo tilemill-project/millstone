@@ -33,7 +33,7 @@ it('correctly handles mac os x zipped archives with the lame __MACOSX/ subfolder
                     "file": path.join(__dirname, 'macosx-zipped/layers/points/9afe4795-crashes_2007_2009.shp'),
                     "type": "shape"
                 },
-                "srs": "+proj=longlat +ellps=WGS84 +no_defs"
+                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             }
         ]);
         done();

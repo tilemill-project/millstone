@@ -39,7 +39,7 @@ it('correctly handles a zipfile containing multiple shapefiles without corruptin
                     "file": path.join(__dirname, 'multi-shape-zip/layers/multi-shape-zip/134ecf39-PLATES_PlateBoundary_ArcGIS.shp'),
                     "type": "shape"
                 },
-                "srs": '+proj=longlat +ellps=WGS84 +no_defs'
+                "srs": '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
             }
         ];
         assert.deepEqual(resolved.Layer, expected);

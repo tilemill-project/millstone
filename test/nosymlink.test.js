@@ -57,7 +57,7 @@ it('correctly handles files without symlinking', function(done) {
                     "file": path.join(__dirname, "nosymlink/pshape.shp"),
                     "type": "shape"
                 },
-                "srs": "+proj=longlat +ellps=WGS84 +no_defs"
+                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
             {
                 "name": "three",
@@ -65,7 +65,7 @@ it('correctly handles files without symlinking', function(done) {
                     "file": path.join(__dirname, "nosymlink/pshape.shp"),
                     "type": "shape"
                 },
-                "srs": "+proj=longlat +ellps=WGS84 +no_defs"
+                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
             {
                 "name": "four",
@@ -74,7 +74,7 @@ it('correctly handles files without symlinking', function(done) {
                     "type": "ogr",
                     "layer_by_index": 0
                 },
-                "srs": "+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs"
+                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
             {
                 "name": "five",
@@ -82,7 +82,7 @@ it('correctly handles files without symlinking', function(done) {
                     "file": path.join(options.cache, "pshape.shp"),
                     "type": "shape"
                 },
-                "srs": "+proj=longlat +ellps=WGS84 +no_defs"
+                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             }
         ];
         for (var i=0;i<=expected.length;i++) {

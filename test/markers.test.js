@@ -64,7 +64,7 @@ it('correctly localizes zipped json', function(done) {
                     "type": "ogr",
                     "layer_by_index": 0
                 },
-                "srs": '+proj=longlat +ellps=WGS84 +towgs84=0,0,0,0,0,0,0 +no_defs'
+                "srs": '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
             }
         ];
         assert.deepEqual(resolved.Layer, expected);
