@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.5
+
+* Upgraded to latest node-srs@0.3.3
+
 #### 0.6.4
 
 * Fixed bug causing zip files to be uncompressed even when they had already been uncompressed
