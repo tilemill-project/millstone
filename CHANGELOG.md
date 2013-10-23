@@ -1,5 +1,25 @@
 ## CHANGELOG
 
+#### 0.6.5
+
+* Upgraded to latest node-srs@0.3.3
+
+#### 0.6.4
+
+* Fixed bug causing zip files to be uncompressed even when they had already been uncompressed
+
+#### 0.6.3
+
+* Added `millstone.drainPool` function to forcefully drain the downloads pool
+
+#### 0.6.2
+
+* Fixed reading for metafiles
+
+#### 0.6.1
+
+* Always honour filepath option in .download #105 (strk)
+
 #### 0.6.0
 
 * Supports node v0.10.x
