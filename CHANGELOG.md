@@ -1,8 +1,16 @@
 ## CHANGELOG
 
-#### 0.6.6
+#### 0.6.8
+
+* Fixed clearing of download tracker internal allowing carto to exit cleanly from using millstone from the command line
+
+#### 0.6.7
 
 * Upgraded to latest node-srs@0.3.6 and node-zipfile@0.4.2
+
+#### 0.6.6
+
+* Skipped accidentally
 
 #### 0.6.5
 
