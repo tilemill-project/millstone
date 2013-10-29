@@ -6,7 +6,8 @@ var millstone = require('millstone');
 var optimist = require('optimist')
             .usage("Usage: $0 <source MML file>")
             .options('h', {alias:'help', describe:'Display this help message'})
-            .options('n', {alias:'nosymlink', boolean:true, describe:'Use unmodified paths instead of symlinking files'});
+            .options('n', {alias:'nosymlink', boolean:true, describe:'Use unmodified paths instead of symlinking files'})
+            .options('b', {alias:'benchmark', boolean:true, describe:'Basic timing of key operations'});
 
 var options = optimist.argv;
 
@@ -27,12 +28,12 @@ var options = {
     mml: mml,
     base: path.dirname(input),
     cache: '/tmp/millstone-test',
-    nosymlink: options.nosymlink
+    nosymlink: options.nosymlink,
+    benchmark: options.benchmark
 };
 
 millstone.resolve(options, function(err, resolved) {
     if (err) throw err;
     console.log(JSON.stringify(resolved,null,4));
-    // force exit to avoid wait for generic-pool to empty
-    process.exit(0);
+    millstone.drainPool(function() {});
 });
