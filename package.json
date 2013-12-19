@@ -20,7 +20,7 @@
         "generic-pool": "~2.0.3",
         "request": "~2.26.0",
         "srs": "~0.3.8",
-        "zipfile": "~0.4.2",
+        "zipfile": "~0.4.3",
         "sqlite3": "2.x",
         "mime": "~1.2.9",
         "mkdirp": "~0.3.3",
