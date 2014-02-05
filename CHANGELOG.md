@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+#### 0.6.9
+
+* Added topojson and gdb support
+* Updated to latest node-srs@0.3.9 and node-zipfile@0.4.3
+
 #### 0.6.8
 
 * Fixed clearing of download tracker internal allowing carto to exit cleanly from using millstone from the command line
