@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+#### 0.6.10
+
+* Fixed projection handling for topojson
+* Dropped usage of `layer_by_index` leaving multilayer ogr detection up to TileMill (mapbox/tilemill#2210)
+
 #### 0.6.9
 
 * Added topojson and gdb support

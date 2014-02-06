@@ -1,6 +1,6 @@
 {
     "name": "millstone",
-    "version": "0.6.9",
+    "version": "0.6.10",
     "main": "./lib/millstone.js",
     "description": "Prepares datasources in an MML file for consumption in Mapnik",
     "url": "https://github.com/mapbox/millstone",
@@ -19,7 +19,7 @@
         "step": "~0.0.5",
         "generic-pool": "~2.0.3",
         "request": "~2.26.0",
-        "srs": "~0.3.9",
+        "srs": "~0.3.10",
         "zipfile": "~0.4.3",
         "sqlite3": "2.x",
         "mime": "~1.2.9",
