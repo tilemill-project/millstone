@@ -61,8 +61,7 @@ it('correctly localizes zipped json', function(done) {
                 "name": "polygons-zipped",
                 "Datasource": {
                     "file": path.join(__dirname, 'zipped-json/layers/polygons-zipped/7e482cc8-polygons.json.json'),
-                    "type": "ogr",
-                    "layer_by_index": 0
+                    "type": "ogr"
                 },
                 "srs": '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
             }
