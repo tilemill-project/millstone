@@ -178,7 +178,8 @@ it('correctly caches remote files', function(done) {
                 "name": "local-json",
                 "Datasource": {
                     "file": path.join(__dirname, 'cache/layers/local.json'),
-                    "type": "ogr"
+                    "type": "ogr",
+                    "layer_by_index":0
                 },
                 "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
@@ -194,7 +195,8 @@ it('correctly caches remote files', function(done) {
                 "name": "absolute-json",
                 "Datasource": {
                     "file": path.join(__dirname, 'cache/layers/absolute-json.json'),
-                    "type": "ogr"
+                    "type": "ogr",
+                    "layer_by_index":0
                 },
                 "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
@@ -210,7 +212,8 @@ it('correctly caches remote files', function(done) {
                 "name": "polygons",
                 "Datasource": {
                     "file": path.join(__dirname, 'cache/layers/polygons.json'),
-                    "type": "ogr"
+                    "type": "ogr",
+                    "layer_by_index":0
                 },
                 "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },

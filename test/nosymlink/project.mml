@@ -24,7 +24,8 @@
         {
             "name": "four",
             "Datasource": {
-                "file": "points.vrt"
+                "file": "points.vrt",
+                "layer": "points"
             }
         },
         {

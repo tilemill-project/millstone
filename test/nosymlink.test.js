@@ -71,7 +71,8 @@ it('correctly handles files without symlinking', function(done) {
                 "name": "four",
                 "Datasource": {
                     "file": path.join(__dirname, "nosymlink/points.vrt"),
-                    "type": "ogr"
+                    "type": "ogr",
+                    "layer":"points"
                 },
                 "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
