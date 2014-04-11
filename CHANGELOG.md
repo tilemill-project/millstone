@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.12
+
+* Upgraded zipfile, request, and underscore
+
 #### 0.6.11
 
 * Fixed back-compatibility with previous `layer_by_index` behavior - not using it only when `layer` is not set by TileMill. This avoids breaking projects from older TileMill versions.
