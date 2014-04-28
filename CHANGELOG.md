@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### FUTURE
+
+* Upgraded to node-srs@0.3.12
+
 #### 0.6.12
 
 * Upgraded zipfile, request, and underscore
