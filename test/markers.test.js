@@ -4,8 +4,7 @@ var assert = require('assert');
 
 // switch to 'development' for more verbose logging
 process.env.NODE_ENV = 'production'
-var utils = require('../lib/util.js');
-var millstone = require('../lib/millstone');
+var millstone = require('../');
 var tests = module.exports = {};
 var rm = require('./support.js').rm;
 

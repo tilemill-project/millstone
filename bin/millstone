@@ -2,7 +2,7 @@
 
 var path = require('path');
 var fs = require('fs');
-var millstone = require('millstone');
+var millstone = require('../lib/millstone');
 var optimist = require('optimist')
             .usage("Usage: $0 <source MML file>")
             .options('h', {alias:'help', describe:'Display this help message'})
@@ -18,7 +18,7 @@ if (options.help) {
 
 var input = options._[0];
 
-if (!input) {
+if (!input || path.extname(input) !== '.mml') {
    console.log('millstone: please provide a path to an mml file');
    process.exit(1);
 }
@@ -35,5 +35,7 @@ var options = {
 millstone.resolve(options, function(err, resolved) {
     if (err) throw err;
     console.log(JSON.stringify(resolved,null,4));
-    millstone.drainPool(function() {});
+    millstone.drainPool(function(err) {
+        if (err) throw err;
+    });
 });
