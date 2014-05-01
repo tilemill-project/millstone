@@ -3,7 +3,7 @@
 #### FUTURE
 
 * Fixed bug whereby more than one interval timer was being created causing the millstone command to hang rather than exit
-* Upgraded to node-srs@0.3.12
+* Upgraded to node-srs@0.4.0
 
 #### 0.6.12
 
