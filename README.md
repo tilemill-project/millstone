@@ -1,6 +1,7 @@
 # millstone
 
 [![Build Status](https://secure.travis-ci.org/mapbox/millstone.png?branch=master)](http://travis-ci.org/mapbox/millstone)
+[![Build status](https://ci.appveyor.com/api/projects/status/jtktmdac2g60h1rj)](https://ci.appveyor.com/project/Mapbox/millstone)
 [![Dependencies](https://david-dm.org/mapbox/millstone.png)](https://david-dm.org/mapbox/millstone)
 
 As of [carto 0.2.0](https://github.com/mapbox/carto), the Carto module expects
