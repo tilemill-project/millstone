@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.x
+
+* Fix issue with URLs with querystring
+
 #### 0.6.14
 
 * Upgraded to node-srs@0.4.1 (now shipping binaries)
