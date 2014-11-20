@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+#### 0.6.15
+
+* Upgraded to node-srs@0.4.5
+* Upgraded to node-zipfile@0.5.4
+* Fixed support for node v0.11.14
+
 #### 0.6.14
 
 * Upgraded to node-srs@0.4.1 (now shipping binaries)
