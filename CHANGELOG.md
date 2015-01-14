@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.16
+
+* Upgraded to node-zipfile@0.5.5
+
 #### 0.6.15
 
 * Upgraded to node-srs@0.4.5
