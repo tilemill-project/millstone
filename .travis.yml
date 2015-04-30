@@ -2,25 +2,10 @@ language: node_js
 
 node_js:
  - "0.10"
- - "0.8"
-
-before_install:
- - sudo apt-get -qq update
+ - "0.11"
 
 install:
- - npm install
-
-before_script:
- - npm test
+ - npm install --fallback-to-build=false
 
 script:
- - rm -rf ./node_modules
- - sudo apt-get -qq install libgdal1-dev
- - npm install --shared_gdal
- - npm test
- - sudo apt-add-repository --yes ppa:ubuntugis/ubuntugis-unstable
- - sudo apt-get -qq update
- - sudo apt-get -qq install libgdal1-dev
- - rm -rf ./node_modules
- - npm install --shared_gdal
  - npm test
