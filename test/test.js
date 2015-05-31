@@ -88,38 +88,50 @@ describe('isRelative', function() {
 
 
     it('detects C:\\ as an absolute path on Windows', function() {
+		if (process.platform !== 'win32') return;
+
         var path = 'C:\\some\\path';
-        var res = millstone.isRelative(path,'win32');
+        var res = millstone.isRelative(path);
         assert.equal(res, false);
     });
 
     it('detects C:\\ as relative path on non-Windows', function() {
+		if (process.platform === 'win32') return;
+	
         var path = 'C:\\some\\path';
         var res = millstone.isRelative(path);
         assert.equal(res, true);
     });
 
     it('detects paths starting with \\ as absolute on Windows', function() {
+		if (process.platform !== 'win32') return;
+
         var path = '\\some\\path';
-        var res = millstone.isRelative(path,'win32');
+        var res = millstone.isRelative(path);
         assert.equal(res, false);
     });
 
     it('detects paths starting with \\ as relative on non-Windows', function() {
+		if (process.platform === 'win32') return;
+		
         var path = '\\some\\path';
         var res = millstone.isRelative(path);
         assert.equal(res, true);
     });
 
     it('detects paths starting with / as absolute on non-Windows', function() {
+		if (process.platform === 'win32') return;
+		
         var path = '/some/path';
         var res = millstone.isRelative(path);
         assert.equal(res, false);
     });
 
     it('detects paths starting with / as absolute on Windows', function() {
+		if (process.platform !== 'win32') return;
+		
         var path = '/some/path';
-        var res = millstone.isRelative(path,'win32');
+        var res = millstone.isRelative(path);
         assert.equal(res, false);
     });
 

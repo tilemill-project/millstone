@@ -11,6 +11,7 @@ var rm = require('./support.js').rm;
 
 var existsSync = require('fs').existsSync || require('path').existsSync;
 
+
 beforeEach(function(){
   rm(path.join(__dirname, '/tmp/millstone-test'));
 })
@@ -57,7 +58,8 @@ it('correctly handles missing shapefile at absolute path', function(done) {
     };
 
     millstone.resolve(options, function(err, resolved) {
-        var err_expected = err.message.search("File not found:") != -1 || err.message.search("Can't open") != -1;
+		//err returns [Error: File not found at absolute path: '/missing.shp']
+        var err_expected = err.message.search("File not found") != -1 || err.message.search("Can't open") != -1;
         assert.ok(err_expected);
         done();
     });
