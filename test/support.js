@@ -3,6 +3,10 @@ var path = require('path');
 var existsSync = require('fs').existsSync || require('path').existsSync;
 
 
+
+exports.newline = (process.platform === 'win32') ? '\r\n' : '\n';
+
+
 exports.platformPath = platformPath = function(path) {
 	if (process.platform !== 'win32') {
 		return path;

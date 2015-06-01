@@ -8,11 +8,13 @@ var utils = require('../lib/util.js');
 var millstone = require('../lib/millstone');
 var tests = module.exports = {};
 var rm = require('./support.js').rm;
+var platformPath = require('./support.js').platformPath;
 
 var existsSync = require('fs').existsSync || require('path').existsSync;
+var cachePath = '/tmp/millstone-test';
 
 beforeEach(function(){
-  rm(path.join(__dirname, '/tmp/millstone-test'));
+  rm(cachePath);
 })
 
 
@@ -22,11 +24,10 @@ beforeEach(function(){
 it('correctly handles re-downloading a zip that is invalid in its cached state', function(done) {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'corrupt-zip/project.mml')));
     
-    var cache = '/tmp/millstone-test';
     var options = {
         mml: mml,
         base: path.join(__dirname, 'corrupt-zip'),
-        cache: cache
+        cache: cachePath
     };
 
     try {
@@ -41,11 +42,13 @@ it('correctly handles re-downloading a zip that is invalid in its cached state',
         assert.equal(err,undefined,err);
         assert.equal(resolved.Stylesheet[0].id, 'style.mss');
         assert.equal(resolved.Stylesheet[0].data, '#polygon { }');
+        
+        var pathStr = platformPath(cachePath + '/29f2b277-Cle%CC%81ment/29f2b277-Cle%CC%81ment.shp');
         var expected = [
             {
                 "name": "corrupt-zip",
                 "Datasource": {
-                    "file": path.join(__dirname, 'corrupt-zip/layers/corrupt-zip/29f2b277-Cle%CC%81ment.shp'),
+                    "file": pathStr,
                     "type": "shape"
                 },
                 "srs": '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'

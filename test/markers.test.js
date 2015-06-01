@@ -7,11 +7,14 @@ process.env.NODE_ENV = 'production'
 var millstone = require('../');
 var tests = module.exports = {};
 var rm = require('./support.js').rm;
+var platformPath = require('./support.js').platformPath;
+var newline = require('./support.js').newline;
 
 var existsSync = require('fs').existsSync || require('path').existsSync;
+var cachePath = '/tmp/millstone-test';
 
 before(function(){
-  rm('/tmp/millstone-test');
+  rm(cachePath);
 });
 
 
@@ -21,7 +24,7 @@ it('correctly localizes remote image/svg files', function(done) {
     var options = {
         mml: mml,
         base: path.join(__dirname, 'markers'),
-        cache: '/tmp/millstone-test'
+        cache: cachePath
     };
 
 
@@ -33,7 +36,7 @@ it('correctly localizes remote image/svg files', function(done) {
     
         assert.equal(err,undefined,err);
         assert.equal(resolved.Stylesheet[0].id, 'style.mss');
-        assert.equal(resolved.Stylesheet[0].data, '// a url like https:example.com in the comments\r\n#points { one/marker-file: url(\''+path1+'\'); two/marker-file: url(\''+path1+'\'); four/marker-file: url("'+path2+'"); five/marker-file:url("'+path3+'"); }\r\n');
+        assert.equal(resolved.Stylesheet[0].data, '// a url like https:example.com in the comments'+newline+'#points { one/marker-file: url(\''+path1+'\'); two/marker-file: url(\''+path1+'\'); four/marker-file: url("'+path2+'"); five/marker-file:url("'+path3+'"); }'+newline);
         assert.deepEqual(resolved.Layer, [
             {
                 "name": "points",
@@ -54,10 +57,12 @@ it('correctly localizes zipped json', function(done) {
     var options = {
         mml: mml,
         base: path.join(__dirname, 'zipped-json'),
-        cache: '/tmp/millstone-test'
+        cache: cachePath
     };
 
     millstone.resolve(options, function(err, resolved) {
+		var pathStr = platformPath(cachePath + '/7e482cc8-polygons.json/7e482cc8-polygons.json.json');
+		
         assert.equal(err,undefined,err);
         assert.equal(resolved.Stylesheet[0].id, 'style.mss');
         assert.equal(resolved.Stylesheet[0].data, '#polygon { }');
@@ -65,7 +70,7 @@ it('correctly localizes zipped json', function(done) {
             {
                 "name": "polygons-zipped",
                 "Datasource": {
-                    "file": path.join(__dirname, 'zipped-json/layers/polygons-zipped/7e482cc8-polygons.json.json'),
+                    "file": pathStr,
                     "type": "ogr",
                     "layer_by_index":0
                 },
