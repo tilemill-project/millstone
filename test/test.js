@@ -89,52 +89,60 @@ describe('isRelative', function() {
 
 
     it('detects C:\\ as an absolute path on Windows', function() {
-		if (process.platform !== 'win32') return;
-
         var path = 'C:\\some\\path';
-        var res = millstone.isRelative(path);
+        var res = millstone.isRelative(path, 'win32');
         assert.equal(res, false);
     });
 
     it('detects C:\\ as relative path on non-Windows', function() {
-		if (process.platform === 'win32') return;
-	
         var path = 'C:\\some\\path';
-        var res = millstone.isRelative(path);
+        var res = millstone.isRelative(path, '*nix');
         assert.equal(res, true);
     });
 
     it('detects paths starting with \\ as absolute on Windows', function() {
-		if (process.platform !== 'win32') return;
-
         var path = '\\some\\path';
-        var res = millstone.isRelative(path);
+        var res = millstone.isRelative(path, 'win32');
         assert.equal(res, false);
     });
 
     it('detects paths starting with \\ as relative on non-Windows', function() {
-		if (process.platform === 'win32') return;
-		
         var path = '\\some\\path';
-        var res = millstone.isRelative(path);
+        var res = millstone.isRelative(path, '*nix');
         assert.equal(res, true);
     });
 
     it('detects paths starting with / as absolute on non-Windows', function() {
-		if (process.platform === 'win32') return;
-		
         var path = '/some/path';
-        var res = millstone.isRelative(path);
+        var res = millstone.isRelative(path, '*nix');
         assert.equal(res, false);
     });
 
     it('detects paths starting with / as absolute on Windows', function() {
-		if (process.platform !== 'win32') return;
-		
+        var path = '/some/path';
+        var res = millstone.isRelative(path, 'win32');
+        assert.equal(res, false);
+    });
+    
+     it('detects C:\\ as it should path on current platform', function() {
+		var actual = (process.platform == "win32") ? false : true;
+        var path = 'C:\\some\\path';
+        var res = millstone.isRelative(path);
+        assert.equal(res, actual);
+    });
+ 
+    it('detects paths starting with \\ as it should on current platform', function() {
+		var actual = (process.platform == "win32") ? false : true;
+		var path = '\\some\\path';
+        var res = millstone.isRelative(path);
+        assert.equal(res, actual);
+    });
+    
+    it('detects paths starting with / as absolute on all platforms', function() {
         var path = '/some/path';
         var res = millstone.isRelative(path);
         assert.equal(res, false);
-    });
+    });   
 
 });
 
@@ -156,7 +164,7 @@ it('correctly caches remote files', function(done) {
     try {
         fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
         rm(path.join(__dirname, 'cache/layers/absolute-shp'));
-        fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
+        fs.unlinkSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json'));
         fs.unlinkSync(path.join(__dirname, 'cache/layers/csv.csv'));
         rm(path.join(__dirname, 'cache/layers/zip-no-ext'));
     } catch (e) {}
@@ -269,15 +277,14 @@ it('correctly caches remote files', function(done) {
             }
         ];
         for (var i=0;i<=10;i++) {
-			console.log(resolved.Layer[i]);
           assert.deepEqual(resolved.Layer[i], expected[i]);
         }
 
         // Check that URLs are downloaded and symlinked.
         assert.ok(existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
         assert.ok(existsSync(path.join(__dirname, 'tmp/87c0c757-stations/87c0c757-stations.shp')));
-        assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/polygons.json')).isSymbolicLink());
-        assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/stations')).isDirectory());
+        assert.ok(fs.lstatSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')).isSymbolicLink() == false);
+        assert.ok(fs.lstatSync(path.join(__dirname, 'tmp/87c0c757-stations/')).isDirectory());
         assert.equal(
             fs.readFileSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json'), 'utf8'),
             fs.readFileSync(path.join(__dirname, 'cache/layers/polygons.json'), 'utf8')
