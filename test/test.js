@@ -146,7 +146,6 @@ describe('isRelative', function() {
 
 });
 
-
 it('correctly caches remote files', function(done) {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache/cache.mml')));
 
@@ -164,7 +163,7 @@ it('correctly caches remote files', function(done) {
     try {
         fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
         rm(path.join(__dirname, 'cache/layers/absolute-shp'));
-        fs.unlinkSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json'));
+        fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
         fs.unlinkSync(path.join(__dirname, 'cache/layers/csv.csv'));
         rm(path.join(__dirname, 'cache/layers/zip-no-ext'));
     } catch (e) {}
@@ -185,8 +184,8 @@ it('correctly caches remote files', function(done) {
         if (err) throw err;
         assert.deepEqual(resolved.Stylesheet, [
             { id:'cache-inline.mss', data:'Map { background-color:#fff }' },
-            { id:'cache-local.mss', data: '#world { polygon-fill: #fff }'+newline },
-            { id:'cache-url.mss', data:'#world { line-width:1; }\n' } // Why is windows returning \n over \r\n?
+            { id:'cache-local.mss', data: '#world { polygon-fill: #fff }\n' },
+            { id:'cache-url.mss', data:'#world { line-width:1; }\n' }
         ]);
         var expected = [
             {
@@ -209,7 +208,7 @@ it('correctly caches remote files', function(done) {
             {
                 "name": "absolute-json",
                 "Datasource": {
-                    "file": path.join(__dirname, 'data/absolute.json'),
+                    "file": path.join(__dirname, 'cache/layers/absolute-json.json'),
                     "type": "ogr",
                     "layer_by_index":0
                 },
@@ -218,7 +217,7 @@ it('correctly caches remote files', function(done) {
             {
                 "name": "absolute-shp",
                 "Datasource": {
-                    "file": path.join(__dirname, 'data/absolute/absolute.shp'),
+                    "file": path.join(__dirname, 'cache/layers/absolute-shp/absolute.shp'),
                     "type": "shape"
                 },
                 "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
@@ -226,7 +225,7 @@ it('correctly caches remote files', function(done) {
             {
                 "name": "polygons",
                 "Datasource": {
-                    "file": path.join(__dirname, 'tmp/5c505ff4-polygons.json'),
+                    "file": path.join(__dirname, 'cache/layers/polygons.json'),
                     "type": "ogr",
                     "layer_by_index":0
                 },
@@ -235,7 +234,7 @@ it('correctly caches remote files', function(done) {
             {
                 "name": "stations",
                 "Datasource": {
-                    "file": path.join(__dirname, 'tmp/87c0c757-stations/87c0c757-stations.shp'),
+                    "file": path.join(__dirname, 'cache/layers/stations/87c0c757-stations.shp'),
                     "type": "shape"
                 },
                 "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
@@ -243,7 +242,7 @@ it('correctly caches remote files', function(done) {
             {
                 "name": "csv",
                 "Datasource": {
-                    "file": path.join(__dirname, 'tmp/92896b56-pub/92896b56-pub'),
+                    "file": path.join(__dirname, 'cache/layers/csv.csv'),
                     "type": "csv"
                 },
                 "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
@@ -270,7 +269,7 @@ it('correctly caches remote files', function(done) {
             {
                 "name": 'zip-no-ext',
                 "Datasource": {
-                    "file": path.join(__dirname, 'tmp/9368bdd9-zip_no_ext/9368bdd9-zip_no_ext.shp'),
+                    "file": path.join(__dirname, 'cache/layers/zip-no-ext/9368bdd9-zip_no_ext.shp'),
                     "type": 'shape'
                 },
                 "srs": '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs'
@@ -283,8 +282,8 @@ it('correctly caches remote files', function(done) {
         // Check that URLs are downloaded and symlinked.
         assert.ok(existsSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')));
         assert.ok(existsSync(path.join(__dirname, 'tmp/87c0c757-stations/87c0c757-stations.shp')));
-        assert.ok(fs.lstatSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json')).isSymbolicLink() == false);
-        assert.ok(fs.lstatSync(path.join(__dirname, 'tmp/87c0c757-stations/')).isDirectory());
+        assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/polygons.json')).isSymbolicLink());
+        assert.ok(fs.lstatSync(path.join(__dirname, 'cache/layers/stations')).isDirectory());
         assert.equal(
             fs.readFileSync(path.join(__dirname, 'tmp/5c505ff4-polygons.json'), 'utf8'),
             fs.readFileSync(path.join(__dirname, 'cache/layers/polygons.json'), 'utf8')
