@@ -184,8 +184,8 @@ it('correctly caches remote files', function(done) {
         if (err) throw err;
         assert.deepEqual(resolved.Stylesheet, [
             { id:'cache-inline.mss', data:'Map { background-color:#fff }' },
-            { id:'cache-local.mss', data: '#world { polygon-fill: #fff }\n' },
-            { id:'cache-url.mss', data:'#world { line-width:1; }\n' }
+            { id:'cache-local.mss', data: '#world { polygon-fill: #fff }'+newline },
+            { id:'cache-url.mss', data:'#world { line-width:1; }\n' } // Windows should be returning a \r\n but is instead doing \n
         ]);
         var expected = [
             {
