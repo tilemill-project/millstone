@@ -14,7 +14,7 @@ addons:
 sudo: false
 
 install:
- - npm install --fallback-to-build=false
+ - npm install
 
 script:
  - npm test
