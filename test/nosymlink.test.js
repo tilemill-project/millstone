@@ -17,6 +17,7 @@ beforeEach(function(){
 
 
 it('correctly handles files without symlinking', function(done) {
+    return done(); //skipped because zip handling is removed
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'nosymlink/project.mml')));
     
     var cache = '/tmp/millstone-test';

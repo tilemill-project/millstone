@@ -18,6 +18,8 @@ before(function(){
 });
 
 it('correctly handles mac os x zipped archives with the lame __MACOSX/ subfolder', function(done) {
+    return done(); //skipped because zip handling is removed
+
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'macosx-zipped/project.mml')));
 
     var options = {

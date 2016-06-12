@@ -22,6 +22,7 @@ beforeEach(function(){
 // non-ascii characters - idea being to be the basis for other tests
 // https://github.com/mapbox/millstone/issues/85
 it('correctly handles re-downloading a zip that is invalid in its cached state', function(done) {
+    return done(); //skipped because zip handling is removed
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'corrupt-zip/project.mml')));
     
     var options = {

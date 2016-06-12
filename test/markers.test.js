@@ -52,6 +52,7 @@ it('correctly localizes remote image/svg files', function(done) {
 });
 
 it('correctly localizes zipped json', function(done) {
+    return done(); //skipped because zip handling is removed
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'zipped-json/project.mml')));
 
     var options = {

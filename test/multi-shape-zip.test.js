@@ -20,6 +20,7 @@ beforeEach(function(){
 
 // https://github.com/mapbox/millstone/issues/99
 it('correctly handles a zipfile containing multiple shapefiles without corrupting data', function(done) {
+    return done(); //skipped because zip handling is removed
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'multi-shape-zip/project.mml')));
     
     var options = {
