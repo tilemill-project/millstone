@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.17
+
+* Upgraded to node-srs@1.x and generic-pool2.4.x
+
 #### 0.6.16
 
 * Upgraded to node-zipfile@0.5.5
