@@ -9,6 +9,7 @@ var utils = require('../lib/util.js');
 var millstone = require('../lib/millstone');
 var tests = module.exports = {};
 var rm = require('./support.js').rm;
+var newline = require('./support.js').newline;
 
 var existsSync = require('fs').existsSync || require('path').existsSync;
 
@@ -89,42 +90,61 @@ describe('isRelative', function() {
 
     it('detects C:\\ as an absolute path on Windows', function() {
         var path = 'C:\\some\\path';
-        var res = millstone.isRelative(path,'win32');
+        var res = millstone.isRelative(path, 'win32');
         assert.equal(res, false);
     });
 
     it('detects C:\\ as relative path on non-Windows', function() {
         var path = 'C:\\some\\path';
-        var res = millstone.isRelative(path);
+        var res = millstone.isRelative(path, '*nix');
         assert.equal(res, true);
     });
 
     it('detects paths starting with \\ as absolute on Windows', function() {
         var path = '\\some\\path';
-        var res = millstone.isRelative(path,'win32');
+        var res = millstone.isRelative(path, 'win32');
         assert.equal(res, false);
     });
 
     it('detects paths starting with \\ as relative on non-Windows', function() {
         var path = '\\some\\path';
-        var res = millstone.isRelative(path);
+        var res = millstone.isRelative(path, '*nix');
         assert.equal(res, true);
     });
 
     it('detects paths starting with / as absolute on non-Windows', function() {
         var path = '/some/path';
-        var res = millstone.isRelative(path);
+        var res = millstone.isRelative(path, '*nix');
         assert.equal(res, false);
     });
 
     it('detects paths starting with / as absolute on Windows', function() {
         var path = '/some/path';
-        var res = millstone.isRelative(path,'win32');
+        var res = millstone.isRelative(path, 'win32');
         assert.equal(res, false);
     });
+    
+     it('detects C:\\ as it should path on current platform', function() {
+		var actual = (process.platform == "win32") ? false : true;
+        var path = 'C:\\some\\path';
+        var res = millstone.isRelative(path);
+        assert.equal(res, actual);
+    });
+ 
+    it('detects paths starting with \\ as it should on current platform', function() {
+		var actual = (process.platform == "win32") ? false : true;
+		var path = '\\some\\path';
+        var res = millstone.isRelative(path);
+        assert.equal(res, actual);
+    });
+    
+    it('detects paths starting with / as absolute on all platforms', function() {
+        var path = '/some/path';
+        var res = millstone.isRelative(path);
+        assert.equal(res, false);
+    });   
 
 });
-
 
 it('correctly caches remote files', function(done) {
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'cache/cache.mml')));
@@ -164,8 +184,8 @@ it('correctly caches remote files', function(done) {
         if (err) throw err;
         assert.deepEqual(resolved.Stylesheet, [
             { id:'cache-inline.mss', data:'Map { background-color:#fff }' },
-            { id:'cache-local.mss', data: '#world { polygon-fill: #fff }\n' },
-            { id:'cache-url.mss', data:'#world { line-width:1; }\n' }
+            { id:'cache-local.mss', data: '#world { polygon-fill: #fff }'+newline },
+            { id:'cache-url.mss', data:'#world { line-width:1; }\n' } // Windows should be returning a \r\n but is instead doing \n
         ]);
         var expected = [
             {

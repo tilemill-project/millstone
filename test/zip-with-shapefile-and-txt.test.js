@@ -17,6 +17,7 @@ beforeEach(function(){
 
 // https://github.com/mapbox/millstone/issues/101
 it('correctly prefers (for back compatibility) shapefiles over .txt files in zip archive', function(done) {
+    return done(); //skipped because zip handling is removed
     var mml = JSON.parse(fs.readFileSync(path.join(__dirname, 'zip-with-shapefile-and-txt/project.mml')));
     
     var cache = '/tmp/millstone-test';

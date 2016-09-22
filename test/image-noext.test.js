@@ -8,6 +8,7 @@ var utils = require('../lib/util.js');
 var millstone = require('../lib/millstone');
 var tests = module.exports = {};
 var rm = require('./support.js').rm;
+var platformPath = require('./support.js').platformPath;
 
 var existsSync = require('fs').existsSync || require('path').existsSync;
 
@@ -30,9 +31,10 @@ it('correctly handles images with no extension', function(done) {
     } catch (e) {}
 
     millstone.resolve(options, function(err, resolved) {
+		var path = platformPath('/tmp/millstone-test/2b2cf79a-images/2b2cf79a-images.jpeg');
         assert.equal(err,undefined,err);
         assert.equal(resolved.Stylesheet[0].id, 'style.mss');
-        assert.equal(resolved.Stylesheet[0].data, "Map {background-image: url('/tmp/millstone-test/2b2cf79a-images/2b2cf79a-images.jpeg');}");
+        assert.equal(resolved.Stylesheet[0].data, "Map {background-image: url('"+path+"');}");
         assert.ok(existsSync('/tmp/millstone-test/2b2cf79a-images/2b2cf79a-images.jpeg'));
         done();
     });

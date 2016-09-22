@@ -2,6 +2,24 @@ var fs = require('fs');
 var path = require('path');
 var existsSync = require('fs').existsSync || require('path').existsSync;
 
+
+
+exports.newline = (process.platform === 'win32') ? '\r\n' : '\n';
+
+
+exports.platformPath = platformPath = function(path) {
+	if (process.platform !== 'win32') {
+		return path;
+	}
+	
+	var windows = path.replace(/[\/]/g, '\\');
+	if (windows.substring(0, 1) == "\\") {
+		windows = 'C:' + windows;
+	}
+	return windows;
+}
+
+
 // Recursive, synchronous rm.
 exports.rm = rm = function(filepath) {
     if (existsSync(filepath)) {
