@@ -25,7 +25,7 @@ it('correctly handles invalid json', function(done) {
     };
 
     millstone.resolve(options, function(err, resolved) {
-        assert.ok(err.message.search("error: 'Unexpected token ]'") != -1);
+        assert.ok(err.message.search("error: 'Unexpected token ]") != -1);
         done();
     });
 });
