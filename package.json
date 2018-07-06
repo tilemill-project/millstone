@@ -27,7 +27,7 @@
         "sqlite3": "~4.0.1",
         "srs": "^1.2.0",
         "step": "~1.0.0",
-        "underscore": "~1.6.0",
+        "underscore": "~1.9.1",
         "zipfile": "~0.5.5"
     },
     "devDependencies": {
