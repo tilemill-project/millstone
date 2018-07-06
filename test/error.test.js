@@ -4,12 +4,9 @@ var assert = require('assert');
 
 // switch to 'development' for more verbose logging
 process.env.NODE_ENV = 'production'
-var utils = require('../lib/util.js');
 var millstone = require('../lib/millstone');
-var tests = module.exports = {};
 var rm = require('./support.js').rm;
 
-var existsSync = require('fs').existsSync || require('path').existsSync;
 
 beforeEach(function(){
   rm(path.join(__dirname, '/tmp/millstone-test'));
@@ -25,7 +22,7 @@ it('correctly handles invalid json', function(done) {
     };
 
     millstone.resolve(options, function(err, resolved) {
-        assert.ok(err.message.search("error: 'Unexpected token ]'") != -1);
+        assert.ok(err.toString().match(/error: 'Unexpected token ]/));
         done();
     });
 });
