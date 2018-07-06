@@ -41,12 +41,6 @@
             }
         },
         {
-            "name": "csv",
-            "Datasource": {
-                "file": "https://docs.google.com/a/dbsgeo.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AqV4OJpywingdFNYLXpKMmxqMG1lWTJzNE45ZUVnNlE&single=true&gid=0&output=csv&ndplr=1"
-            }
-        },
-        {
             "name": "sqlite",
             "Datasource": {
                 "file": "layers/countries.sqlite",

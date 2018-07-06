@@ -144,7 +144,6 @@ it('correctly caches remote files', function(done) {
         fs.unlinkSync(path.join(__dirname, 'cache/layers/absolute-json.json'));
         rm(path.join(__dirname, 'cache/layers/absolute-shp'));
         fs.unlinkSync(path.join(__dirname, 'cache/layers/polygons.json'));
-        fs.unlinkSync(path.join(__dirname, 'cache/layers/csv.csv'));
         rm(path.join(__dirname, 'cache/layers/zip-no-ext'));
     } catch (e) {}
 
@@ -218,14 +217,6 @@ it('correctly caches remote files', function(done) {
                     "type": "shape"
                 },
                 "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
-            },
-            {
-                "name": "csv",
-                "Datasource": {
-                    "file": path.join(__dirname, 'cache/layers/csv.csv'),
-                    "type": "csv"
-                },
-                "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
             },
             {
                 "name": 'sqlite',
