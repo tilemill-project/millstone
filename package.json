@@ -28,7 +28,7 @@
         "srs": "^1.2.0",
         "step": "~1.0.0",
         "underscore": "~1.9.1",
-        "zipfile": "~0.5.5"
+        "zipfile": "~0.5.11"
     },
     "devDependencies": {
         "mocha": "~5.2.0"
