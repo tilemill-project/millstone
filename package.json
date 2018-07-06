@@ -27,12 +27,12 @@
         "optimist": "~0.6.1"
     },
     "devDependencies": {
-        "mocha": "*"
+        "mocha": "~5.2.0"
     },
     "bin": {
       "millstone": "./bin/millstone"
     },
     "scripts": {
-      "test": "mocha -R spec --timeout 10000"
+      "test": "mocha -R spec --timeout 10000 --exit"
     }
 }
