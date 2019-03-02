@@ -43,7 +43,7 @@
         {
             "name": "csv",
             "Datasource": {
-                "file": "https://docs.google.com/a/dbsgeo.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AqV4OJpywingdFNYLXpKMmxqMG1lWTJzNE45ZUVnNlE&single=true&gid=0&output=csv&ndplr=1"
+                "file": "https://docs.google.com/spreadsheets/u/1/d/17G8cVaC76DE5tIY8Uvj9P-An4enlnib8oXxvM-qbfDo/export?format=csv&id=17G8cVaC76DE5tIY8Uvj9P-An4enlnib8oXxvM-qbfDo&gid=1375855324"
             }
         },
         {
