@@ -1,0 +1,14 @@
+{
+    "Stylesheet": [
+        "style-no-querystring.mss"
+    ],
+    "Layer": [
+        {
+            "name": "background-image-no-querystring",
+            "Datasource": {
+                "type": "csv",
+                "inline": "x,y\n0,0"
+            }
+        }
+    ]
+}

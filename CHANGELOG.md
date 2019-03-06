@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+#### 0.6.x
+
+* Fix issue with URLs with querystring
+
 #### 0.6.17
 
 * Upgraded to node-srs@1.x and generic-pool2.4.x
