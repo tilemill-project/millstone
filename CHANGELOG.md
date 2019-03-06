@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+#### 0.6.18
+
+* Upgraded to sqlite3 4.0.6.
+* Fixed 2 errors with the mocha tests.
+
 #### 0.6.17
 
 * Upgraded to node-srs@1.x and generic-pool2.4.x
