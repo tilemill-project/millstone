@@ -34,6 +34,7 @@ if [ "$1" == "-c" ]; then
   clean; exit 0
 fi
 
+clear
 npm install
 npm test
 clean
