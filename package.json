@@ -22,7 +22,7 @@
         "underscore": "~1.6.0",
         "step": "~0.0.5",
         "generic-pool": "~2.4.1",
-        "request": "2.x",
+        "axios": "^0.20.0",
         "srs": "1.x",
         "zipfile": "~0.5.5",
         "sqlite3": "4.1.0",
