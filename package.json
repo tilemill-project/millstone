@@ -19,7 +19,7 @@
         "email": "info@mapbox.com"
     },
     "dependencies": {
-        "underscore": "~1.6.0",
+        "underscore": "~1.12.1",
         "step": "~0.0.5",
         "generic-pool": "~2.4.1",
         "request": "2.x",
